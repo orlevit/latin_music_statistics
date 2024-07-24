@@ -1,4 +1,9 @@
 # Byte-compiled / optimized / DLL files
+*.zip
+Meta-Llama-3-8B*
+lms/
+.ipynb_checkpoints/
+
 __pycache__/
 *.py[cod]
 *$py.class
