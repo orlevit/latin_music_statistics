@@ -3,7 +3,8 @@ import os
 import pandas as pd
 from lyricsgenius import Genius
 from config import DATA_FILE, CHORUS_SAMPLE_NUMBER, SPANISH_THRESHOLD
-from helper import header_and_footer_removal, separate_chorus_rest, spanish_detection, text_cleaning, print_sample_chorus
+from helper import *
+
 
 GENIUS_API_TOKEN = 'Od2yrHNfOCRHimIH3ev-wGZxZNJz3-47I4QfpzihKstD4eQaCItV28UJ72MAiV2W'
 
@@ -38,8 +39,14 @@ for lyrics in all_lyrics:
 # print_sample_chorus(CHORUS_SAMPLE_NUMBER, clean_lyrics, chorus_counter_list,  all_chorus_list):
 
 # song 50 is Italian
-selected_lyrics = spanish_detection(clean_lyrics, SPANISH_THRESHOLD)
+selected_lyrics, spanish_idx = spanish_detection(clean_lyrics, SPANISH_THRESHOLD)
 clean_selected_lyrics = text_cleaning(selected_lyrics)
+df_spanish = df.iloc[spanish_idx]
+df_spanish['clean_lyrics'] = clean_selected_lyrics
+calc_sentiment(df_spanish)
+find_song_topic(df_spanish, 'clean_lyrics')
+aa=most_common_word(df_spanish, 'clean_lyrics')
+
 pass
 
 
