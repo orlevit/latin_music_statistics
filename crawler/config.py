@@ -9,7 +9,7 @@ BASE_DIR = os.getcwd()
 CHORUS_SAMPLE_NUMBER = 50
 CHORUS_SAMPLE_DIR_NAME = 'chorus_sample'
 
-DATA_DIR = os.path.join(BASE_DIR, 'data')
+DATA_DIR = os.path.join(BASE_DIR, 'data_dir')
 DATA_FILE = os.path.join(DATA_DIR, 'data.csv')
 PROCESSED_DATA_FILE = os.path.join(DATA_DIR, 'processed_data.csv')
 
