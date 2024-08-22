@@ -9,6 +9,19 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 # data = pd.DataFrame(clean_selected_lyrics, columns=['lyrics'])#load_data()
 
 nltk.download('vader_lexicon')
+
+import os,sys
+BASE_DIR = os.getcwd()
+CHORUS_SAMPLE_NUMBER = 50
+CHORUS_SAMPLE_DIR_NAME = 'chorus_sample'
+
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+DATA_FILE = os.path.join(DATA_DIR, 'data.csv')
+PROCESSED_DATA_FILE = os.path.join(DATA_DIR, 'processed_data.csv')
+
+
+data = pd.read_csv(PROCESSED_DATA_FILE, encoding='utf-8')
+
 # Streamlit app
 st.title("Bachata Lyrics Language Detection")
 
@@ -28,17 +41,24 @@ if options == "Most Common Words":
 # Sentiment Analysis
 elif options == "Sentiment Analysis":
     st.title("Sentiment Analysis of Bachata Lyrics")
-    sia = SentimentIntensityAnalyzer()
-    data['sentiment'] = data['lyrics'].apply(lambda x: sia.polarity_scores(x)['compound'])
 
-    # Plotting the histogram using Matplotlib
-    plt.figure(figsize=(10, 5))
-    plt.hist(data['sentiment'], bins=20, edgecolor='k')
-    plt.title('Sentiment Analysis of Bachata Lyrics')
-    plt.xlabel('Sentiment Score')
-    plt.ylabel('Frequency')
-    st.pyplot(plt)
+    sentiment_option = st.sidebar.selectbox("Select sentiment analysis", ("Overall Sentiment", "Artist Sentiment Distribution"))
 
+    if sentiment_option == "Overall Sentiment":
+        sia = SentimentIntensityAnalyzer()
+        data['sentiment'] = data['lyrics'].apply(lambda x: sia.polarity_scores(x)['compound'])
+    
+        # Plotting the histogram using Matplotlib
+        plt.figure(figsize=(10, 5))
+        plt.hist(data['sentiment'], bins=20, edgecolor='k')
+        plt.title('Sentiment Analysis of Bachata Lyrics')
+        plt.xlabel('Sentiment Score')
+        plt.ylabel('Frequency')
+        st.pyplot(plt)
+    elif sentiment_option == "Artist Sentiment Distribution":
+        pass
+    else:
+        pass
 # Word Cloud
 elif options == "Word Cloud":
     st.title("Word Cloud of Bachata Lyrics")

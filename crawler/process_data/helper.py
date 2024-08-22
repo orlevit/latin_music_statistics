@@ -1,8 +1,20 @@
 import os
 import re
+import ast
+import sys
 from langdetect import DetectorFactory, detect_langs
+import pandas as pd
+from collections import Counter
+import spacy
+from spacy.lang.es.stop_words import STOP_WORDS as spanish_stop_words
 
-from config import CHORUS_SAMPLE_DIR
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+sys.path.append(parent_dir)
+
+from config import CHORUS_SAMPLE_DIR, SPANISH_THRESHOLD, NOT_BACHATA
+# spanish_stop_words = ['es'] ######### remove!
+
+
 
 ''' Remove header and footer '''
 
@@ -72,6 +84,7 @@ def spanish_detection(lyrics, threshold):
     es_not_detected_list = []
     es_prob_less = []
     es_selected_songs = []
+    spanish_idx = []
 
     for i in range(len(lyrics)):
         if len(lyrics[i]):
@@ -81,6 +94,7 @@ def spanish_detection(lyrics, threshold):
                 lang_prob = es_detected[0].prob
                 if threshold < lang_prob:
                     es_selected_songs.append(lyrics[i])
+                    spanish_idx.append(i)
                 else:
                     es_prob_less.append(i)
             else:
@@ -94,7 +108,7 @@ def spanish_detection(lyrics, threshold):
     print(f'Songs which Spanish was detected and above the threshold={threshold}: {len(es_selected_songs)}')
     print(f'Percentage of the data selected: {round(len(es_selected_songs)/len(lyrics), 2)}%')
 
-    return es_selected_songs
+    return es_selected_songs, spanish_idx
 
 
 def text_cleaning(lyrics):
@@ -106,7 +120,68 @@ def text_cleaning(lyrics):
         text = re.sub(r'\".*?\"[\s*]?|[\s*]?\".*?\"', '', text)
         text = re.sub(r'[!¡?¿,.,]', '', text)
         text = re.sub(r'See [\w\s]+ LiveGet tickets as low as \$\d+You might also like|You might also like', '', text)
-        
+
         clean_lyrics.append(text)
 
     return clean_lyrics
+
+
+def get_dominant_sentiment(sentiment_dict):
+    #sentiment_dict = ast.literal_eval(sentiment_str)  # Convert the string to a dictionary
+    dominant_sentiment = max(sentiment_dict, key=sentiment_dict.get)  # Get the key with the highest value
+    return dominant_sentiment
+
+
+def calc_sentiment(df):
+    df.loc[:, 'sentiment'] = [{'negative':0.8, 'positive': 0.05, 'neutral':0.15}] * len(df)
+    df['selected_sentiment'] = df['sentiment'].apply(get_dominant_sentiment)
+
+
+def find_song_topic(df, lyric_column_name):
+    df.loc[:, 'song_topic'] = 'wow'
+
+
+def extract_lyrics(df):
+    all_lyrics = df['lyrics'].to_list()
+
+    clean_lyrics = []
+    chorus_list = []
+    song_wo_chorus_list = []
+    all_chorus_list = []
+    chorus_counter_list = []
+
+    for lyrics in all_lyrics:
+        lyrics_body = header_and_footer_removal(lyrics)
+        chorus, rest, all_chorus, chorus_counter = separate_chorus_rest(lyrics_body)
+
+        clean_lyrics.append(lyrics_body)
+        chorus_list.append(chorus)
+        song_wo_chorus_list.append(rest)
+        all_chorus_list.append(all_chorus)
+        chorus_counter_list.append(chorus_counter)
+
+    return clean_lyrics, chorus_list, song_wo_chorus_list, all_chorus_list, chorus_counter_list
+
+
+def clean_spanish_songs(df, clean_lyrics):
+    selected_lyrics, spanish_idx = spanish_detection(clean_lyrics, SPANISH_THRESHOLD)
+    clean_selected_lyrics = text_cleaning(selected_lyrics)
+    df_spanish = df.iloc[spanish_idx].copy()
+    df_spanish['clean_lyrics'] = clean_selected_lyrics
+    df_spanish = df_spanish[~df_spanish['title_with_artists'].isin(NOT_BACHATA)]
+
+    return df_spanish
+
+def normalized_words(df, lyrics_col_name):
+    nlp = spacy.load('es_core_news_sm')
+    
+    # Remove stop words, lemmatize
+    def preprocess_text(text):
+        doc = nlp(text.lower())  # Convert to lowercase and process with Spacy
+    
+        # Remove stop words and punctuation, and perform lemmatization
+        tokens = [token.lemma_ for token in doc if token.text not in spanish_stop_words and not token.is_punct and not token.is_space]
+        return tokens
+    
+    # preprocess_text(aa)
+    df['norm_words'] = df[lyrics_col_name].apply(lambda x: preprocess_text(x))

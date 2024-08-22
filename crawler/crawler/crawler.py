@@ -1,10 +1,16 @@
 import re
+import os
+import sys
 import pandas as pd
 from lyricsgenius import Genius
+
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+sys.path.append(parent_dir)
+
 from config import GENIUS_API_TOKEN, DATA_FILE, TAG, SONGS_LIMIT
 
-genius = Genius(GENIUS_API_TOKEN, timeout=15, retries=3)
 
+genius = Genius(GENIUS_API_TOKEN, timeout=15, retries=3)
 
 def songs_w_tags(tag):
     page = 1
