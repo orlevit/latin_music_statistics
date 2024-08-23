@@ -32,10 +32,6 @@ def most_common_word(df, text_column, top=10):
 
     return stats_df
 
-# def num_of_diff_artists(df, col):
-#     unique_artists_count = df[col].explode().nunique()
-#     return unique_artists_count
-
 def dist_sentiment(df, col):
     sentiment_counts = df[col].value_counts()
 

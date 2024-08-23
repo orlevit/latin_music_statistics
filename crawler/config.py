@@ -34,3 +34,5 @@ NOT_BACHATA = [
     'INTERLUDIO DE LA DARKCHATA: vigilia by MORY',
     'Otra Noche Loca by Leoni Torres (Ft. Louis Mikán)'
 ]
+
+ADDITIONAL_WORDS_REMOVAL = ['ay', 'oh', 'pa', 'tá', 'eh','yeah', 'i','the','and','you']

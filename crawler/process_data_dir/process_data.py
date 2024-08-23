@@ -8,7 +8,7 @@ from lyricsgenius import Genius
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 
-from config import DATA_FILE, CHORUS_SAMPLE_NUMBER, SPANISH_THRESHOLD, NOT_BACHATA, PROCESSED_DATA_FILE
+from config import DATA_FILE, CHORUS_SAMPLE_NUMBER, SPANISH_THRESHOLD, NOT_BACHATA, PROCESSED_DATA_FILE, ADDITIONAL_WORDS_REMOVAL
 from helper import *
 
 warnings.filterwarnings("ignore", category=pd.errors.PerformanceWarning)
@@ -27,7 +27,8 @@ clean_lyrics, chorus_list, song_wo_chorus_list, all_chorus_list, chorus_counter_
 
 df_spanish = clean_spanish_songs(df, clean_lyrics)
 print(f'After filtering non Bachata songs: {len(df_spanish)} songs')
-normalized_words(df_spanish, 'clean_lyrics')
+normalized_words(df_spanish, 'clean_lyrics', 'norm_words')
+df_spanish['norm_words'] = df_spanish['norm_words'].apply(remove_words)
 df_spanish['norm_w_len'] = df_spanish['norm_words'].apply(lambda x: len(x))
 calc_sentiment(df_spanish)
 find_song_topic(df_spanish, 'clean_lyrics')

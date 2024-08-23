@@ -11,7 +11,7 @@ from spacy.lang.es.stop_words import STOP_WORDS as spanish_stop_words
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 
-from config import CHORUS_SAMPLE_DIR, SPANISH_THRESHOLD, NOT_BACHATA
+from config import CHORUS_SAMPLE_DIR, SPANISH_THRESHOLD, NOT_BACHATA, ADDITIONAL_WORDS_REMOVAL
 # spanish_stop_words = ['es'] ######### remove!
 
 
@@ -172,7 +172,7 @@ def clean_spanish_songs(df, clean_lyrics):
 
     return df_spanish
 
-def normalized_words(df, lyrics_col_name):
+def normalized_words(df, lyrics_col_name, dest_name):
     nlp = spacy.load('es_core_news_sm')
     
     # Remove stop words, lemmatize
@@ -184,4 +184,7 @@ def normalized_words(df, lyrics_col_name):
         return tokens
     
     # preprocess_text(aa)
-    df['norm_words'] = df[lyrics_col_name].apply(lambda x: preprocess_text(x))
+    df[dest_name] = df[lyrics_col_name].apply(lambda x: preprocess_text(x))
+
+def remove_words(word_list):
+    return [word for word in word_list if word not in ADDITIONAL_WORDS_REMOVAL]
