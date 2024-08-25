@@ -17,10 +17,13 @@ def general_statistics(df):
     norm_words_stat = calculate_counts(df, 'norm_words')
     
     diff_artists_num = len(artist_stat)
-    sentiment_dist = dist_sentiment(df, 'selected_sentiment')
+    # sentiment_dist = dist_sentiment(df, 'selected_sentiment')
+    sentiment_single_dist = dist_single_sentiment(df, 'selected_sentiment')
+    sentiment_avg_dist = dist_avg_sentiment(df, 'sentiment')
     avg_words_per_song = int(df['norm_w_len'].mean())
 
-    return artist_stat, norm_words_stat, diff_artists_num, sentiment_dist, avg_words_per_song
+    return artist_stat, norm_words_stat, diff_artists_num, sentiment_single_dist, \
+    sentiment_avg_dist, avg_words_per_song
 
 
 def artist_statistics(df, artist_name):
@@ -31,7 +34,9 @@ def artist_statistics(df, artist_name):
     norm_words_stat = calculate_counts(df_artist, 'norm_words')
     
     num_songs_per_artist = len(df_artist)
-    sentiment_dist = dist_sentiment(df_artist, 'selected_sentiment')
+    sentiment_single_dist = dist_single_sentiment(df_artist, 'selected_sentiment')
+    sentiment_avg_dist = dist_avg_sentiment(df_artist, 'sentiment')    
     avg_words_per_song = int(df_artist['norm_w_len'].mean())
 
-    return norm_words_stat, num_songs_per_artist, sentiment_dist, avg_words_per_song
+    return norm_words_stat, num_songs_per_artist, sentiment_single_dist, sentiment_avg_dist, \
+    avg_words_per_song

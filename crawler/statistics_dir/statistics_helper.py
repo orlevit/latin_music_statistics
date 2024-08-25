@@ -32,7 +32,7 @@ def most_common_word(df, text_column, top=10):
 
     return stats_df
 
-def dist_sentiment(df, col):
+def dist_single_sentiment(df, col):
     sentiment_counts = df[col].value_counts()
 
     total_df = len(df)
@@ -45,7 +45,23 @@ def dist_sentiment(df, col):
         'Percentage': artist_percentages
     }).reset_index()
     stats_df.columns = ['Sentiment', 'Frequency', 'Percentage']
+    stats_df = stats_df.sort_values(by='Sentiment', ascending=False)
+
     return stats_df
+
+def dist_avg_sentiment(df, col):
+    sen_list = []
+    for v in df[col].tolist():
+        sen_list.append(eval(v))
+    
+    df_sentiment_raw = pd.DataFrame(sen_list)
+    df_series_sentiment = df_sentiment_raw.mean()
+    df_sentiment = df_series_sentiment.reset_index()
+    df_sentiment.columns = ['Sentiment', 'Percentage']
+
+    df_sentiment = df_sentiment.sort_values(by='Sentiment', ascending=False)
+
+    return df_sentiment
 
 def avg_word_per_song(df, col):
     df['unique_word_count'] = df[col].apply(len)

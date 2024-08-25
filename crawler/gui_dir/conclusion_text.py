@@ -2,8 +2,9 @@ GENERAL_GENERAL = """
 - General statistics:
     1. There are {len_songs} songs in the corpus.
     2. There corpus has {len_diff_artists} different artists.
-    3. {sentiment}
-    4. The average words per song is: {avg_song_len}.
+    3. {single_sentiment}
+    4. {avg_sentiment}    
+    5. The average words per song is: {avg_song_len}.
     """
 
 GENERAL_WORD ="""
@@ -20,15 +21,24 @@ GENERAL_ARTIST = """
 ARTIST_GENERAL = """
 - Artist statistics:
     1. There are {len_songs} songs for this artist.
-    2. {sentiment}    
-    3. The average words per song is: {avg_song_len}.
+    2. {single_sentiment}
+    3. {avg_sentiment}    
+    4. The average words per song is: {avg_song_len}.
     """
 
 
-def sentiment_to_text(df):
-    markdown = "Sentiment Distribution\n"
+def max_sentiment_to_text(df):
+    markdown = "Single sentiment Distribution (The maximum sentiment percentage is selected as the single song sentiment)\n"
     for index, row in df.iterrows():
         markdown += f" \t \t - {row['Sentiment']} (Frequency: {row['Frequency']} | Percentage: {row['Percentage']:.2f}%)\n"
+        
+    return markdown
+
+def avg_sentiment_to_text(df):
+    markdown = "Average sentiment Distribution (Averaging all the sentiments of the songs)\n"
+    
+    for index, row in df.iterrows():
+         markdown += f" \t \t - {row['Sentiment']} (Percentage: {row['Percentage']:.2f}%)\n"
         
     return markdown
     

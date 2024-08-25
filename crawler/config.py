@@ -45,5 +45,6 @@ ADDITIONAL_WORDS_REMOVAL = ['ay', 'oh', 'pa', 'tá', 'eh','yeah', 'i','the','and
 
 OPENAI_BATCH_SIZE = 1
 OPENAI_MODEL = "gpt-4o"
+OPENAI_EMBEDDINGS_MODEL = 'text-embedding-3-small'
 THEME_PROMPT = 'write the theme of the song in short sentence:\nWrite like this - The song  theme is: ...\nThe song:\n\n{song}\n\n'
 SENTIMENT_PROMPT='analyis the overall sentiment in terms of:\nneural, positive, negative\nfor the following song:\n\n{song}\n\nnwrite only in json formt with the appropriate decimal percentage'
