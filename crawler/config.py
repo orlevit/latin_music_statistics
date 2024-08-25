@@ -11,7 +11,13 @@ CHORUS_SAMPLE_DIR_NAME = 'chorus_sample'
 
 DATA_DIR = os.path.join(BASE_DIR, 'data_dir')
 DATA_FILE = os.path.join(DATA_DIR, 'data.csv')
+
+FINAL_DATA_FILE = os.path.join(DATA_DIR, 'final_data.csv') # after add openai theme and sentiment
 PROCESSED_DATA_FILE = os.path.join(DATA_DIR, 'processed_data.csv')
+DATA_JSOL_DIR = os.path.join(DATA_DIR, 'jsol')
+
+BATCH_THEME_JSOL_FILE = os.path.join(DATA_JSOL_DIR, 'song_theme')
+BATCH_SENTIMENT_JSOL_FILE = os.path.join(DATA_JSOL_DIR, 'song_sentiment')
 
 CHORUS_SAMPLE_DIR = os.path.join(BASE_DIR, CHORUS_SAMPLE_DIR_NAME)
 GENIUS_API_TOKEN = 'Od2yrHNfOCRHimIH3ev-wGZxZNJz3-47I4QfpzihKstD4eQaCItV28UJ72MAiV2W'
@@ -36,3 +42,8 @@ NOT_BACHATA = [
 ]
 
 ADDITIONAL_WORDS_REMOVAL = ['ay', 'oh', 'pa', 'tá', 'eh','yeah', 'i','the','and','you']
+
+OPENAI_BATCH_SIZE = 1
+OPENAI_MODEL = "gpt-4o"
+THEME_PROMPT = 'write the theme of the song in short sentence:\nWrite like this - The song  theme is: ...\nThe song:\n\n{song}\n\n'
+SENTIMENT_PROMPT='analyis the overall sentiment in terms of:\nneural, positive, negative\nfor the following song:\n\n{song}\n\nnwrite only in json formt with the appropriate decimal percentage'
