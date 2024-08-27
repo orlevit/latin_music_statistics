@@ -43,8 +43,10 @@ NOT_BACHATA = [
 
 ADDITIONAL_WORDS_REMOVAL = ['ay', 'oh', 'pa', 'tá', 'eh','yeah', 'i','the','and','you']
 
-OPENAI_BATCH_SIZE = 1
+OPENAI_BATCH_SIZE = 100
 OPENAI_MODEL = "gpt-4o"
+CHATGPT_MODEL_CONTEXT_WINDOW = 128000
+
 OPENAI_EMBEDDINGS_MODEL = 'text-embedding-3-small'
 THEME_PROMPT = 'write the theme of the song in short sentence:\nWrite like this - The song  theme is: ...\nThe song:\n\n{song}\n\n'
 SENTIMENT_PROMPT='analyis the overall sentiment in terms of:\nneural, positive, negative\nfor the following song:\n\n{song}\n\nnwrite only in json formt with the appropriate decimal percentage'
