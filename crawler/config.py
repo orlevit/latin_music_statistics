@@ -11,6 +11,7 @@ CHORUS_SAMPLE_DIR_NAME = 'chorus_sample'
 
 DATA_DIR = os.path.join(BASE_DIR, 'data_dir')
 DATA_FILE = os.path.join(DATA_DIR, 'data.csv')
+GENERAL_SONGS_THEMS = os.path.join(DATA_DIR, 'general_themes.csv')
 
 FINAL_DATA_FILE = os.path.join(DATA_DIR, 'final_data.csv') # after add openai theme and sentiment
 PROCESSED_DATA_FILE = os.path.join(DATA_DIR, 'processed_data.csv')
