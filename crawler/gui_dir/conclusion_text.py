@@ -1,4 +1,4 @@
-GENERAL_GENERAL = """
+GENERAL_GENERAL_INSIGHT = """
 - General statistics:
     1. There are {len_songs} songs in the corpus.
     2. There corpus has {len_diff_artists} different artists.
@@ -7,18 +7,21 @@ GENERAL_GENERAL = """
     5. The average words per song is: {avg_song_len}.
     """
 
-GENERAL_WORD ="""
+GENERAL_WORD_INSIGHT ="""
         - The percentage of occurrences for the words 'Querer' and 'Amor' is significantly higher than for other words, suggesting that the predominant theme among the singers is a desire for love.
         - While the precise meaning of the text may not be immediately apparent from the words alone, the context and sentiment conveyed through key terms like "dejar" (leave), "volver" (return), "pensar" (think), "morir" (die), and "olvidar" (forget) suggest an underlying theme of loss—most likely the loss of love. 
         """
 
-GENERAL_ARTIST = """
+GENERAL_ARTIST_INSIGHT = """
         - The five most frequent artists appear in 36% of the songs, with a significant drop in the presence of other artists beyond this point. This indicates that the vocabulary, sentiment, and themes conveyed by these prominent artists have a major impact on the overall statistics.
         """
 
+GENERAL_SENTIMENT_INSIGHT = """ SSS """
+
+GENERAL_THEME_INSIGHT = """ SSS """
 
 # Per artist
-ARTIST_GENERAL = """
+ARTIST_GENERAL_INSIGHT = """
 - Artist statistics:
     1. There are {len_songs} songs for this artist.
     2. {single_sentiment}

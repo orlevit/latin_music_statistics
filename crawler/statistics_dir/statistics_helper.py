@@ -19,7 +19,6 @@ def calculate_counts(df, col):
 
 def most_common_word(df, text_column, top=10):
 
-    # all_words = df[text_column].apply(lambda x: eval(x)).explode().tolist()
     all_words = df[text_column].explode().tolist()
 
     word_counts = Counter(all_words)
