@@ -9,20 +9,19 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 
 
-def general_statistics(df):   
+def general_statistics(df):
     df['all_artists'] = df['all_artists'].apply(lambda x: eval(x))
     artist_stat = calculate_counts(df, 'all_artists')
-    
-    #df['norm_words'] = df['norm_words'].apply(lambda x: eval(x))
     norm_words_stat = calculate_counts(df, 'norm_words')
-    
+    gt_stat = calculate_counts(df, 'general_theme')
+
     diff_artists_num = len(artist_stat)
-    # sentiment_dist = dist_sentiment(df, 'selected_sentiment')
+
     sentiment_single_dist = dist_single_sentiment(df, 'selected_sentiment')
     sentiment_avg_dist = dist_avg_sentiment(df, 'sentiment')
     avg_words_per_song = int(df['norm_w_len'].mean())
 
-    return artist_stat, norm_words_stat, diff_artists_num, sentiment_single_dist, \
+    return artist_stat, norm_words_stat, gt_stat, diff_artists_num, sentiment_single_dist, \
     sentiment_avg_dist, avg_words_per_song
 
 

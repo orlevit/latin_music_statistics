@@ -9,18 +9,29 @@ BASE_DIR = os.getcwd()
 CHORUS_SAMPLE_NUMBER = 50
 CHORUS_SAMPLE_DIR_NAME = 'chorus_sample'
 
+###### Directories ######
 DATA_DIR = os.path.join(BASE_DIR, 'data_dir')
-DATA_FILE = os.path.join(DATA_DIR, 'data.csv')
-GENERAL_SONGS_THEMS = os.path.join(DATA_DIR, 'general_themes.csv')
-
-FINAL_DATA_FILE = os.path.join(DATA_DIR, 'final_data.csv') # after add openai theme and sentiment
-PROCESSED_DATA_FILE = os.path.join(DATA_DIR, 'processed_data.csv')
-DATA_JSOL_DIR = os.path.join(DATA_DIR, 'jsol')
-
-BATCH_THEME_JSOL_FILE = os.path.join(DATA_JSOL_DIR, 'song_theme')
-BATCH_SENTIMENT_JSOL_FILE = os.path.join(DATA_JSOL_DIR, 'song_sentiment')
-
+DATA_THEME_DIR = os.path.join(DATA_DIR, 'themes')
+DATA_THEME_SONG_JSOL_DIR = os.path.join(DATA_THEME_DIR, 'jsol')
+DATA_THEME_SINGERS_DIR = os.path.join(DATA_THEME_DIR, 'singers')
 CHORUS_SAMPLE_DIR = os.path.join(BASE_DIR, CHORUS_SAMPLE_DIR_NAME)
+##########################
+
+# Files
+DATA_FILE = os.path.join(DATA_DIR, 'data.csv') # Original data
+PROCESSED_DATA_FILE = os.path.join(DATA_DIR, 'processed_data.csv') # Processed songs lyrics
+FINAL_DATA_FILE = os.path.join(DATA_DIR, 'final_data.csv') # Final data
+
+####### Theme data #######
+DATA_JSOL_DIR = os.path.join(DATA_THEME_SONG_JSOL_DIR, 'jsol')
+GENERAL_SONGS_THEMS = os.path.join(DATA_THEME_DIR, 'general_themes.csv')
+BATCH_THEME_JSOL_FILE = os.path.join(DATA_JSOL_DIR, 'song_theme')
+##########################
+
+#### Sentiment data #####
+BATCH_SENTIMENT_JSOL_FILE = os.path.join(DATA_JSOL_DIR, 'song_sentiment')
+#########################
+
 GENIUS_API_TOKEN = 'Od2yrHNfOCRHimIH3ev-wGZxZNJz3-47I4QfpzihKstD4eQaCItV28UJ72MAiV2W'
 
 NOT_BACHATA = [
@@ -44,10 +55,24 @@ NOT_BACHATA = [
 
 ADDITIONAL_WORDS_REMOVAL = ['ay', 'oh', 'pa', 'tá', 'eh','yeah', 'i','the','and','you']
 
+# CHatGpt prompts
+##### Find single song theme #####
+
 OPENAI_BATCH_SIZE = 100
 OPENAI_MODEL = "gpt-4o"
 CHATGPT_MODEL_CONTEXT_WINDOW = 128000
 
 OPENAI_EMBEDDINGS_MODEL = 'text-embedding-3-small'
+
 THEME_PROMPT = 'write the theme of the song in short sentence:\nWrite like this - The song  theme is: ...\nThe song:\n\n{song}\n\n'
 SENTIMENT_PROMPT='analyis the overall sentiment in terms of:\nneural, positive, negative\nfor the following song:\n\n{song}\n\nnwrite only in json formt with the appropriate decimal percentage'
+###################################
+
+##### Cluster all song themes to small number of general themes #####
+MAX_THEME_CLUSTER_SIZE = 20
+THEME_BATCH_SIZE = 100
+ROBERTA_EMBEDDINGS_MODEL = 'sentence-transformers/all-roberta-large-v1'
+
+SONGS_CLUSTERING_PROMPT = "Cluster the following song themes into brief general themes:\n\n{batch_text}\n\nPlease provide the clusters in a clean Python list format without any extra text or formatting. The list should be written exactly as a Python list, like this: [\"...\",\"...\",\"...\"].\n\nEnsure there are no additional markers or explanations—just the list."
+CLUSTERS_PROMPT = f'These song theme clusters\nGroup these song themes into broader, more concise categories, combining similar themes and removing redundancy.\nCombine them into less than {MAX_THEME_CLUSTER_SIZE} ' + 'categories\nThe output should look like: ["...","...","..."].\n{batch_text}\nEnsure all clusters are combined into a single, flat Python list with no nested lists.'
+#####################################################################

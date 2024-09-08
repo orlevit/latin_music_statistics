@@ -11,9 +11,9 @@ sys.path.append(os.path.abspath(os.path.join(parent_dir, 'statistics_dir')))
 
 from statistics_dir.statistics import *
 
-def plot_top_percentage(df, x_label, title, annot_bar=True, rotation=0):
+def plot_top_percentage(df, x_label, title, annot_bar=True, rotation=0, samples_num=10):
 
-    top_df = df.sort_values(by='Percentage', ascending=False).head(20)
+    top_df = df.sort_values(by='Percentage', ascending=False).head(samples_num)
     
     # Create the bar plot
     bars = plt.bar(top_df.iloc[:, 0], top_df['Percentage'], color='skyblue')
