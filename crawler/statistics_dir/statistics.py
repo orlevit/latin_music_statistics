@@ -12,7 +12,7 @@ sys.path.append(parent_dir)
 def general_statistics(df):
     try:
         df.loc[:, "all_artists"] = df["all_artists"].apply(lambda x: eval(x))
-    except TypeError as e:
+    except (TypeError, NameError, SyntaxError) as e:
         pass
 
     artist_stat = calculate_counts(df, "all_artists")
