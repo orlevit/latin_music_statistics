@@ -15,6 +15,7 @@ def calculate_counts(df, col):
         'Percentage': percentages
     }).reset_index()
     stats_df.columns = [col, 'Frequency', 'Percentage']
+    
     return stats_df
 
 def most_common_word(df, text_column, top=10):
