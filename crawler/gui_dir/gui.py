@@ -57,9 +57,10 @@ if options == "Known Artist":
     gui_template(df_artist, artist_title, options = ["General", "Word", "Sentimemt", "Theme"], word_insight = GENERAL_WORD_INSIGHT , sentiment_insight = GENERAL_SENTIMENT_INSIGHT, artist_insight = GENERAL_ARTIST_INSIGHT, theme_insight = GENERAL_THEME_INSIGHT)
 
     # Artist - specific theme
-
-    client = OpenAI(api_key = OPENAI_KEY)
-    df_specific_artist = load_artist_theme_df(df_artist, singer_name = artist_options, client=client, cluster_num = None)
+    client = OpenAI(api_key = OPENAI_KEY
+                   
+    unique_artist_gt_len = len(df_artist["general_theme"].unique())
+    df_specific_artist = load_artist_theme_df(df_artist, singer_name = artist_options, client=client, cluster_num = 2 * unique_artist_gt_len)
 
     artist_specific_title = f"{artist_options.upper()} SPECIFIC THEME STATISTICS"
     ARTIST_GENERAL_THEME_DIR = os.path.join(DATA_THEME_SINGERS_DIR, artist_options)
@@ -71,7 +72,7 @@ if options == "Known Artist":
 
     st.subheader("-" * 100)
 
-    plot_top_percentage(df=artist_theme_stat, x_label="Theme", title="Theme percentage", rotation=90, samples_num=min(len(artist_theme_stat),10))
+    plot_top_percentage(df=artist_theme_stat, x_label="Theme", title="Theme percentage", rotation=90, samples_num = len(artist_theme_stat))
     st.subheader("Specific artist general songs theme list:")
     st.markdown(gs_numbered)
 

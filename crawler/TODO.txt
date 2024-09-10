@@ -1,43 +1,7 @@
 removal additional words.
 
-add openai
-
-Add free text option regrding the data
-
---------------------------------------------------------- Theme
-write the theme of the song in short sentence:
-Write like this - The song  theme is: ...
-
-the song: 
-
------------------------------------------------------- streamlit get text
-import streamlit as st
-st.text_input("Your name", key="name")
-
-# You can access the value at any point with:
-st.session_state.name
-------------------------------------------------------- sentimpnt prompt
-
-analyis the overall sentiment in terms of:
-neural, positive, negative
-
-for the following song:
-
-Ya me han informado que tu novio es un insípido aburrido
-Tú que eres fogata y él tan frío
-Dice tu amiguita que es celoso no quiere que sea tu amigo
-Sospecha que soy un pirata y robaré su flor
-
-No te asombres si una noche
-Entro a tu cuarto y nuevamente te hago mía
-Bien conoces mis errores
-El egoísmo ha de ser dueño de tu vida
-Eres mía mía mía
-No te hagas la loca eso muy bien ya lo sabías
-
-....
-
-
-
-write only the json with the appropriate percentage
------------------------------------------------------
+1) add openai embedding
+2) check all values - sanity check
+3) Present some part pf the data - another pan
+4) Add free text option regrding the data - search
+5) conclusions

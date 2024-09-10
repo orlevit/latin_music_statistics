@@ -147,7 +147,6 @@ def create_embeddings(df, model, src_col, tgt_col):
 
 def find_closest_embeddings(df, general_themes_df):
     # Assuming embeddings are stored as lists or numpy arrays in the DataFrame columns
-    df['closest_general_theme'] = None
 
     for idx, theme_row in df.iterrows():
         try:
@@ -205,15 +204,17 @@ def create_specific_singer_theme(df, client, theme_dir, theme_file, log_file, fi
     general_themes_list = get_general_themes(df, client, logger, max_clusters = cluster_num)
     general_themes_df = pd.DataFrame(general_themes_list, columns = ['general_theme'])
     
-    # Embedding
-    emb_model = SentenceTransformer(ROBERTA_EMBEDDINGS_MODEL)
-    create_embeddings(general_themes_df,  emb_model, 'general_theme', 'general_theme_emb')
-    general_themes_df.to_csv(theme_file, index = False)
+    ### Embedding ###
+    # emb_model = SentenceTransformer(ROBERTA_EMBEDDINGS_MODEL)
+    # create_embeddings(general_themes_df,  emb_model, 'general_theme', 'general_theme_emb')
+    # result_df = find_closest_embeddings(df, general_themes_df)
 
-    result_df = find_closest_embeddings(df, general_themes_df)
-    result_df.to_csv(final_file, index=False)
+    match_generic_theme(df, general_themes_df, 'general_theme', client)
     
-    return result_df
+    general_themes_df.to_csv(theme_file, index = False)    
+    df.to_csv(final_file, index=False)
+    
+    return df
 
 def load_artist_theme_df(df, singer_name, client, cluster_num = None):
     ARTIST_GENERAL_THEME_DIR = os.path.join(DATA_THEME_SINGERS_DIR, singer_name)
@@ -239,6 +240,43 @@ def load_artist_theme_df(df, singer_name, client, cluster_num = None):
                                cluster_num)
     return artist_df
 
+############### Match generic theme for each song theme ###############
+def find_generic_theme(theme_txt, general_themes, client):
+    
+    MATCH_PROMPT = 'To which of the following general categories:\n{general_themes}\nThis theme fits best:\n{cur_theme}\nwrite only the catagory name:'
+    WRONG_GENERAL_THEME =  'This is the {attempt_num} attempt.\n' +\
+                 'You failed to extract the best fitting general theme out of the theme list.\n' +\
+                 'You wrote name: "{name}" , which is not in the list.'
+
+
+    attempt_num = 1
+    curr_text = MATCH_PROMPT.format(general_themes=','.join(general_themes), cur_theme=theme_txt)
+    chatgpt_msg_request = prepare_chatgpt_msg(curr_text, '', [])
+    response = chatgpt_request_list_extraction(chatgpt_msg_request, OPENAI_MODEL, client)
+    
+    response_txt = response.choices[0].message.content
+    while response_txt not in general_themes:
+        attempt_num += 1
+        prev_text = WRONG_GENERAL_THEME.format(attempt_num=attempt_num, name=response_txt)
+    
+        chatgpt_msg_request = prepare_chatgpt_msg(curr_text, prev_text, [])
+        response = chatgpt_request_list_extraction(chatgpt_msg_request, OPENAI_MODEL, client)
+        response_txt = response.choices[0].message.content
+    
+        print(f'{attempt_num}:\n\nprev_text {prev_text}')
+        print('-'*100)
+    return response_txt  
+
+def match_generic_theme(df, df_general_themes, tgt_theme_col_name, client):
+    df[tgt_theme_col_name] = ""
+    general_themes = df_general_themes['general_theme'].tolist()
+    
+    # Use tqdm to add a progress bar to the loop
+    for index, row in tqdm(df.iterrows(), total=len(df), desc="Processing rows"):
+        result = find_generic_theme(row['theme'], general_themes, client)
+        df.at[index, tgt_theme_col_name] = result
+
+    
 # emb_model = SentenceTransformer(ROBERTA_EMBEDDINGS_MODEL)
 # create_embeddings(df, emb_model, 'theme', 'theme_emb')
 # create_embeddings(general_themes_df,  emb_model, 'general_theme', 'general_theme_emb')
