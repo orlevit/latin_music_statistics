@@ -18,6 +18,40 @@ def calculate_counts(df, col):
     
     return stats_df
 
+def calculate_counts_with_sentiment(df, col, sentiment_col):
+    df_expanded = df.explode(col)
+
+    # Calculate frequency and percentage for the main column
+    all_counts = df_expanded[col].value_counts()
+    total_records = len(df)
+    percentages = (all_counts / total_records) * 100
+
+    stats_df = pd.DataFrame({
+        col: all_counts.index,
+        'Frequency': all_counts.values,
+        'Percentage': percentages.values
+    })
+
+    # Create nested dictionary to hold sentiments within each category
+    nested_dict = {}
+    for col_value in stats_df[col]:
+        selected_df = df_expanded[df_expanded[col] == col_value]
+        sentiment_counts = selected_df[sentiment_col].value_counts()
+
+        # Ensure the sentiment order is always "Negative", "Positive", "Neutral"
+        ordered_sentiments =  list(sentiment_counts.keys())
+        ordered_counts = {sentiment: sentiment_counts.get(sentiment, 0) for sentiment in ordered_sentiments}
+
+        nested_dict[col_value] = {
+            'Frequency': int(all_counts[col_value]),
+            'Percentage': round(percentages[col_value], 2),
+            'Sentiments': ordered_counts
+        }
+
+    sorted_data = dict(sorted(nested_dict.items(), key=lambda item: item[1]['Frequency'], reverse=True))
+
+    return sorted_data
+
 def most_common_word(df, text_column, top=10):
 
     all_words = df[text_column].explode().tolist()

@@ -15,9 +15,11 @@ def general_statistics(df):
     except (TypeError, NameError, SyntaxError) as e:
         pass
 
-    artist_stat = calculate_counts(df, "all_artists")
-    norm_words_stat = calculate_counts(df, "norm_words")
-    gt_stat = calculate_counts(df, "general_theme")
+    # artist_stat = calculate_counts(df, "all_artists") #################
+    artist_stat = calculate_counts_with_sentiment(df, "all_artists", "selected_sentiment")
+    norm_words_stat = calculate_counts(df, "norm_words") 
+    #gt_stat = calculate_counts(df, "general_theme") ##############################
+    gt_stat = calculate_counts_with_sentiment(df, "general_theme", "selected_sentiment")
 
 
     sentiment_single_dist = dist_single_sentiment(df, "selected_sentiment")

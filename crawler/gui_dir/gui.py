@@ -54,28 +54,29 @@ if options == "Known Artist":
     # Artist - general theme
     df_artist = df_all_artist[df_all_artist["all_artists"] == artist_options]
     artist_title = f"{artist_options.upper()} GENERAL THEME STATISTICS"
-    gui_template(df_artist, artist_title, options = ["General", "Word", "Sentimemt", "Theme"], word_insight = GENERAL_WORD_INSIGHT , sentiment_insight = GENERAL_SENTIMENT_INSIGHT, artist_insight = GENERAL_ARTIST_INSIGHT, theme_insight = GENERAL_THEME_INSIGHT)
+    gui_template(df_artist, artist_title, options = ["General", "Word", "Sentiment", "Theme"], word_insight = GENERAL_WORD_INSIGHT , sentiment_insight = GENERAL_SENTIMENT_INSIGHT, artist_insight = GENERAL_ARTIST_INSIGHT, theme_insight = GENERAL_THEME_INSIGHT)
 
-    # Artist - specific theme
-    client = OpenAI(api_key = OPENAI_KEY
-                   
-    unique_artist_gt_len = len(df_artist["general_theme"].unique())
-    df_specific_artist = load_artist_theme_df(df_artist, singer_name = artist_options, client=client, cluster_num = 2 * unique_artist_gt_len)
-
-    artist_specific_title = f"{artist_options.upper()} SPECIFIC THEME STATISTICS"
-    ARTIST_GENERAL_THEME_DIR = os.path.join(DATA_THEME_SINGERS_DIR, artist_options)
-    ARTIST_GENERAL_THEME_FILE = os.path.join(ARTIST_GENERAL_THEME_DIR, f'{artist_options}_general_themes.csv')
-    artist_general_theme_df = pd.read_csv(ARTIST_GENERAL_THEME_FILE)
-    gt_names = set(artist_general_theme_df["general_theme"].tolist())
-    gs_numbered = "\n".join([f"{i+1}. {item}" for i, item in enumerate(gt_names)])
-    artist_theme_stat = calculate_counts(df_specific_artist, "general_theme")
-
-    st.subheader("-" * 100)
-
-    plot_top_percentage(df=artist_theme_stat, x_label="Theme", title="Theme percentage", rotation=90, samples_num = len(artist_theme_stat))
-    st.subheader("Specific artist general songs theme list:")
-    st.markdown(gs_numbered)
-
-
-    st.subheader("Conclusions")
-    st.markdown(GENERAL_THEME_INSIGHT)
+##    # Artist - specific theme
+#    OPENAI_KEY = "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"
+#    client = OpenAI(api_key = OPENAI_KEY)
+#                   
+#    unique_artist_gt_len = len(df_artist["general_theme"].unique())
+#    df_specific_artist = load_artist_theme_df(df_artist, singer_name = artist_options, client=client, cluster_num = int(1.5 * unique_artist_gt_len))
+#
+#    artist_specific_title = f"{artist_options.upper()} SPECIFIC THEME STATISTICS"
+#    ARTIST_GENERAL_THEME_DIR = os.path.join(DATA_THEME_SINGERS_DIR, artist_options)
+#    ARTIST_GENERAL_THEME_FILE = os.path.join(ARTIST_GENERAL_THEME_DIR, f'{artist_options}_general_themes.csv')
+#    artist_general_theme_df = pd.read_csv(ARTIST_GENERAL_THEME_FILE)
+#    gt_names = set(artist_general_theme_df["general_theme"].tolist())
+#    gs_numbered = "\n".join([f"{i+1}. {item}" for i, item in enumerate(gt_names)])
+#    artist_theme_stat = calculate_counts(df_specific_artist, "general_theme")
+#
+#    st.subheader("-" * 100)
+#
+#    plot_top_percentage(df=artist_theme_stat, x_label="Theme", title="Theme percentage", rotation=90, samples_num = len(artist_theme_stat))
+#    st.subheader("Specific artist general songs theme list:")
+#    st.markdown(gs_numbered)
+#
+#
+#    st.subheader("Conclusions")
+#    st.markdown(GENERAL_THEME_INSIGHT)
