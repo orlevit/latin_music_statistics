@@ -55,13 +55,16 @@ def plot_top_samples_with_sentiments(nested_dict, x_label, title, sentiment_colo
     top_n_samples = dict(list(nested_dict.items())[:samples_num]) # nested_dict should be sorted Reversed
     
     # Initialize plot
-    fig, ax = plt.subplots()
-    
+    fig, ax = plt.subplots(figsize=(17,15))
+
+    for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] +
+             ax.get_xticklabels() + ax.get_yticklabels()):
+        item.set_fontsize(20)
     # Set colors for different sentiments
 
     sentiment_labels = ['negative', 'positive', 'neutral']
     # Plot each sentiment for the top categories
-    for key_name_, stats in top_n_samples.items():
+    for key_name, stats in top_n_samples.items():
         base_value = 0  # Start from the bottom for each bar
 
         # Get the sentiment data from the current theme
@@ -75,7 +78,7 @@ def plot_top_samples_with_sentiments(nested_dict, x_label, title, sentiment_colo
             # Plot each sentiment as a stacked bar
             if count > 0:  # Only plot non-zero counts
                 bar = ax.bar(
-                    key_name_, sentiment_percentage,
+                    key_name, sentiment_percentage,
                     bottom=base_value,
                     color=sentiment_colors.get(sentiment, 'blue'),
                 )
@@ -83,23 +86,24 @@ def plot_top_samples_with_sentiments(nested_dict, x_label, title, sentiment_colo
                 # Annotate each sentiment's count in the middle of its segment
                 if annot_bar:
                     ax.text(
-                        key_name_, base_value + sentiment_percentage / 2,
+                        key_name, base_value + sentiment_percentage / 2,
                         f"{count}",  # Annotate with the count
-                        ha='center', va='center', color='black' 
+                        ha='center', va='center', color='black',
+                        fontsize=20
                     )
                     
                 base_value += sentiment_percentage  # Update the base for the next sentiment
 
     for sentiment in sentiment_labels:
-        ax.bar(key_name_, 0,  # Dummy bar for the legend
+        ax.bar(key_name, 0,  # Dummy bar for the legend
          color=sentiment_colors[sentiment],
          label=sentiment)
                 
                      
     ax.set_xlabel(x_label)
     ax.set_ylabel("Count")
-    ax.set_title(title)
-    ax.legend(title="Sentiment", bbox_to_anchor=(1.05, 1), loc='upper left')
+    ax.set_title(title, fontsize = 20)
+    ax.legend(title="Sentiment", bbox_to_anchor=(1.05, 1), loc='upper left', prop={'size': 20}, fontsize=20,title_fontsize=20)
 
     if rotation != 0:
         plt.xticks(rotation=rotation)
@@ -196,6 +200,9 @@ def gui_template(df, title, options, word_insight, sentiment_insight, artist_ins
         )
         
 
+    elif analysis_option == "Data":
+        st.dataframe(df[['title_with_artists', 'sentiment', 'theme', 'general_theme']])
+
     elif analysis_option == "Artist":
         
         st.subheader("Conclusions")
@@ -219,3 +226,4 @@ def gui_template(df, title, options, word_insight, sentiment_insight, artist_ins
         st.markdown(theme_insight)
         st.subheader("General songs theme list:")
         st.markdown(gs_numbered)
+

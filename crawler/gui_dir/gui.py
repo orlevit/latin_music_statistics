@@ -31,13 +31,13 @@ options = st.sidebar.radio( "Select Analysis", ["General", "Known Sentiment", "K
 # Most Common Words
 if options == "General":
     gen_title = f"{TAG.upper()} STATISTICS"
-    gui_template(df, title=gen_title, options = ["General", "Word", "Sentiment", "Artist", "Theme"], word_insight = GENERAL_WORD_INSIGHT , sentiment_insight = GENERAL_SENTIMENT_INSIGHT, artist_insight = GENERAL_ARTIST_INSIGHT, theme_insight = GENERAL_THEME_INSIGHT)
+    gui_template(df, title=gen_title, options = ["General", "Word", "Sentiment", "Artist", "Theme", "Data"], word_insight = GENERAL_WORD_INSIGHT , sentiment_insight = GENERAL_SENTIMENT_INSIGHT, artist_insight = GENERAL_ARTIST_INSIGHT, theme_insight = GENERAL_THEME_INSIGHT)
 
 if options == "Known Sentiment":
     sentiment_options = st.sidebar.radio( "Select ", ["Positive", "Negative", "Neutral"])
     sen_title = f"{sentiment_options.upper()} SENTIMENT STATISTICS"
     df_sentiment = df[df['selected_sentiment'] == sentiment_options.lower()]
-    gui_template(df_sentiment, sen_title, options = ["General", "Word", "Artist", "Theme"], word_insight = GENERAL_WORD_INSIGHT , sentiment_insight = GENERAL_SENTIMENT_INSIGHT, artist_insight = GENERAL_ARTIST_INSIGHT, theme_insight = GENERAL_THEME_INSIGHT)
+    gui_template(df_sentiment, sen_title, options = ["General", "Word", "Artist", "Theme", "Data"], word_insight = GENERAL_WORD_INSIGHT , sentiment_insight = GENERAL_SENTIMENT_INSIGHT, artist_insight = GENERAL_ARTIST_INSIGHT, theme_insight = GENERAL_THEME_INSIGHT)
 
 if options == "Known Artist":
     try:
@@ -54,7 +54,7 @@ if options == "Known Artist":
     # Artist - general theme
     df_artist = df_all_artist[df_all_artist["all_artists"] == artist_options]
     artist_title = f"{artist_options.upper()} GENERAL THEME STATISTICS"
-    gui_template(df_artist, artist_title, options = ["General", "Word", "Sentiment", "Theme"], word_insight = GENERAL_WORD_INSIGHT , sentiment_insight = GENERAL_SENTIMENT_INSIGHT, artist_insight = GENERAL_ARTIST_INSIGHT, theme_insight = GENERAL_THEME_INSIGHT)
+    gui_template(df_artist, artist_title, options = ["General", "Word", "Sentiment", "Theme", "Data"], word_insight = GENERAL_WORD_INSIGHT , sentiment_insight = GENERAL_SENTIMENT_INSIGHT, artist_insight = GENERAL_ARTIST_INSIGHT, theme_insight = GENERAL_THEME_INSIGHT)
 
 ##    # Artist - specific theme
 #    OPENAI_KEY = "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"

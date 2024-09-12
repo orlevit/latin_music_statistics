@@ -126,14 +126,20 @@ def text_cleaning(lyrics):
     return clean_lyrics
 
 
-def get_dominant_sentiment(sentiment_dict):
-    #sentiment_dict = ast.literal_eval(sentiment_str)  # Convert the string to a dictionary
-    dominant_sentiment = max(sentiment_dict, key=sentiment_dict.get)  # Get the key with the highest value
+def get_dominant_sentiment(sentiment_dict_input):
+    try:
+        sentiment_dict = eval(sentiment_dict_input)
+    except TypeError as e:
+        sentiment_dict = sentiment_dict_input
+
+    if sentiment_dict['positive'] == sentiment_dict['negative']:
+        dominant_sentiment = 'neutral'
+    else:
+        dominant_sentiment = max(sentiment_dict, key=sentiment_dict.get)  # Get the key with the highest value
     return dominant_sentiment
 
 
 def calc_sentiment(df):
-    df.loc[:, 'sentiment'] = [{'negative':0.8, 'positive': 0.05, 'neutral':0.15}] * len(df)
     df['selected_sentiment'] = df['sentiment'].apply(get_dominant_sentiment)
 
 
