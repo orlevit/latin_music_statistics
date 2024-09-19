@@ -1,11 +1,13 @@
 import os
 import ast
 import time
+import math
 import logging
 import numpy as np
 import pandas as pd
 
 from tqdm import tqdm
+from openai import OpenAI
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from config import MAX_THEME_CLUSTER_SIZE, THEME_BATCH_SIZE, SONGS_CLUSTERING_PROMPT, CLUSTERS_PROMPT, OPENAI_MODEL, DATA_THEME_SINGERS_DIR, ROBERTA_EMBEDDINGS_MODEL
@@ -277,6 +279,50 @@ def match_generic_theme(df, df_general_themes, tgt_theme_col_name, client):
         df.at[index, tgt_theme_col_name] = result
 
     
+##################### clustering by specific artist
+
+def filter_cluster_threshold(df_artist):
+    unique_artist_gt_len = len(df_artist["general_theme"].unique())
+    avg_samples_in_cluster = len(df_artist)// 10        
+    denum_num = min(unique_artist_gt_len, avg_samples_in_cluster)
+    artist_cluster_threshold = len(df_artist) // denum_num 
+
+    return artist_cluster_threshold
+
+def number_of_cluster(df_artist):
+    unique_artist_gt_len = len(df_artist["general_theme"].unique())
+    avg_samples_in_cluster = math.ceil(len(df_artist)// 10)
+    artist_cluster_threshold = max(max(unique_artist_gt_len, avg_samples_in_cluster),6)
+        
+    return artist_cluster_threshold
+
+def find_themes_specific_artist(df_artist, artist_name):
+    client = OpenAI(api_key = OPENAI_KEY)
+
+    artist_cluster_threshold = filter_cluster_threshold(df_artist)
+    above_threshold = {key: value for key, value in  df_artist['general_theme'].value_counts().to_dict().items() if artist_cluster_threshold < value }
+    df_artist_selected = df_artist[df_artist['general_theme'].isin(above_threshold.keys())]
+    selected_cluster_num = number_of_cluster(df_artist_selected)
+
+    print('NUMNER_OF CLUSTERS: ------>')
+    print(f'len-df_artist:{len(df_artist)}')
+    print(f'len-df_artist_selected:{len(df_artist_selected)}')
+    print(f'selected_unique_themes:{len(df_artist_selected["general_theme"].unique())}')
+    print(f'artist_cluster_threshold:{artist_cluster_threshold}')
+    unique_artist_gt_len = len(df_artist_selected["general_theme"].unique())
+    avg_samples_in_cluster = len(df_artist_selected)// 10
+    print(f' check clusters {unique_artist_gt_len}, {avg_samples_in_cluster}')
+
+    print(f'df_artist_unique: {df_artist["general_theme"].unique()}')
+    print(f'selected_cluster_num:{selected_cluster_num}')
+    print(f'df_artist_counts : {df_artist['general_theme'].value_counts().to_dict()}')
+    print(f'above_threshold_dict:{above_threshold}')
+    aaa = df_artist_selected["general_theme"].value_counts().to_dict()
+    print(f'selected_df_artist_counts : {aaa}')
+    df_specific_artist = load_artist_theme_df(df_artist, singer_name = artist_name, client=client, cluster_num = selected_cluster_num)
+
+    return df_specific_artist
+
 # emb_model = SentenceTransformer(ROBERTA_EMBEDDINGS_MODEL)
 # create_embeddings(df, emb_model, 'theme', 'theme_emb')
 # create_embeddings(general_themes_df,  emb_model, 'general_theme', 'general_theme_emb')

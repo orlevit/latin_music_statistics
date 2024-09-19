@@ -1,4 +1,7 @@
 import logging
+def center_text(text):
+    centered_text = f"<h3 style='text-align: center'>{text}</h3>"#, unsafe_allow_html=True)
+    return centered_text
 
 def define_logger(logger_file_name, does_print_to_console=True):
     # Create a logger

@@ -76,3 +76,8 @@ ROBERTA_EMBEDDINGS_MODEL = 'sentence-transformers/all-roberta-large-v1'
 SONGS_CLUSTERING_PROMPT = "Cluster the following song themes into brief general themes:\n\n{batch_text}\n\nPlease provide the clusters in a clean Python list format without any extra text or formatting. The list should be written exactly as a Python list, like this: [\"...\",\"...\",\"...\"].\n\nEnsure there are no additional markers or explanations—just the list."
 CLUSTERS_PROMPT = f'These song theme clusters\nGroup these song themes into broader, more concise categories, combining similar themes and removing redundancy.\nCombine them into less than {MAX_THEME_CLUSTER_SIZE} ' + 'categories\nThe output should look like: ["...","...","..."].\n{batch_text}\nEnsure all clusters are combined into a single, flat Python list with no nested lists.'
 #####################################################################
+SENTIMENT_COLORS = {
+        'positive': 'green',
+        'negative': 'red',
+        'neutral': 'yellow'
+    }
