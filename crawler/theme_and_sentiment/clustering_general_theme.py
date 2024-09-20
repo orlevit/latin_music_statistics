@@ -5,6 +5,7 @@ import math
 import logging
 import numpy as np
 import pandas as pd
+import streamlit as st
 
 from tqdm import tqdm
 from openai import OpenAI
@@ -229,10 +230,8 @@ def load_artist_theme_df(df, singer_name, client, cluster_num = None):
             
     if os.path.exists(ARTIST_FINAL_RESULTS_FILE):
         artist_df = pd.read_csv(ARTIST_FINAL_RESULTS_FILE)
-        print(f'SAME!!!!!!!!!!!!!11 - {ARTIST_FINAL_RESULTS_FILE}')
 
-    else:
-        print(f'RECALC!!!!!!!!!!!!!11 - {ARTIST_FINAL_RESULTS_FILE}')
+    elif client is not None:
         artist_df = create_specific_singer_theme(df,
                                client,                                           
                                ARTIST_GENERAL_THEME_DIR, 
@@ -240,6 +239,10 @@ def load_artist_theme_df(df, singer_name, client, cluster_num = None):
                                ARTIST_GENERAL_THEME_LOG,
                                ARTIST_FINAL_RESULTS_FILE,
                                cluster_num)
+    else:
+        st.title("There is no OPENAI key register for this new artist")
+        raise("There is no OPENAI key register for this new artist")
+        
     return artist_df
 
 ############### Match generic theme for each song theme ###############
@@ -292,33 +295,23 @@ def filter_cluster_threshold(df_artist):
 def number_of_cluster(df_artist):
     unique_artist_gt_len = len(df_artist["general_theme"].unique())
     avg_samples_in_cluster = math.ceil(len(df_artist)// 10)
-    artist_cluster_threshold = max(max(unique_artist_gt_len, avg_samples_in_cluster),6)
+    artist_cluster_threshold = max(max(unique_artist_gt_len, avg_samples_in_cluster) ,6)
         
     return artist_cluster_threshold
 
 def find_themes_specific_artist(df_artist, artist_name):
-    client = OpenAI(api_key = OPENAI_KEY)
+    OPENAI_KEY = os.getenv('OPENAI_KEY')
+
+    if OPENAI_KEY:
+        client = OpenAI(api_key=OPENAI_KEY)
+    else:
+        client = None
 
     artist_cluster_threshold = filter_cluster_threshold(df_artist)
     above_threshold = {key: value for key, value in  df_artist['general_theme'].value_counts().to_dict().items() if artist_cluster_threshold < value }
     df_artist_selected = df_artist[df_artist['general_theme'].isin(above_threshold.keys())]
     selected_cluster_num = number_of_cluster(df_artist_selected)
 
-    print('NUMNER_OF CLUSTERS: ------>')
-    print(f'len-df_artist:{len(df_artist)}')
-    print(f'len-df_artist_selected:{len(df_artist_selected)}')
-    print(f'selected_unique_themes:{len(df_artist_selected["general_theme"].unique())}')
-    print(f'artist_cluster_threshold:{artist_cluster_threshold}')
-    unique_artist_gt_len = len(df_artist_selected["general_theme"].unique())
-    avg_samples_in_cluster = len(df_artist_selected)// 10
-    print(f' check clusters {unique_artist_gt_len}, {avg_samples_in_cluster}')
-
-    print(f'df_artist_unique: {df_artist["general_theme"].unique()}')
-    print(f'selected_cluster_num:{selected_cluster_num}')
-    print(f'df_artist_counts : {df_artist['general_theme'].value_counts().to_dict()}')
-    print(f'above_threshold_dict:{above_threshold}')
-    aaa = df_artist_selected["general_theme"].value_counts().to_dict()
-    print(f'selected_df_artist_counts : {aaa}')
     df_specific_artist = load_artist_theme_df(df_artist, singer_name = artist_name, client=client, cluster_num = selected_cluster_num)
 
     return df_specific_artist
