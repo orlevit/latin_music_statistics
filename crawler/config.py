@@ -19,12 +19,12 @@ CHORUS_SAMPLE_DIR = os.path.join(BASE_DIR, CHORUS_SAMPLE_DIR_NAME)
 
 # Files
 DATA_FILE = os.path.join(DATA_DIR, 'data.csv') # Original data
-PROCESSED_DATA_FILE = os.path.join(DATA_DIR, 'processed_data.csv') # Processed songs lyrics
 FINAL_DATA_FILE = os.path.join(DATA_DIR, 'final_data.csv') # Final data
 
 ####### Theme data #######
 DATA_JSOL_DIR = os.path.join(DATA_THEME_SONG_JSOL_DIR, 'jsol')
 GENERAL_SONGS_THEMS = os.path.join(DATA_THEME_DIR, 'general_themes.csv')
+GENERAL_SONGS_THEMS_LOG = os.path.join(DATA_THEME_DIR, 'general_themes.log')
 BATCH_THEME_JSOL_FILE = os.path.join(DATA_JSOL_DIR, 'song_theme')
 ##########################
 
@@ -53,7 +53,7 @@ NOT_BACHATA = [
     'Otra Noche Loca by Leoni Torres (Ft. Louis Mikán)'
 ]
 
-ADDITIONAL_WORDS_REMOVAL = ['ay', 'oh', 'pa', 'tá', 'eh','yeah', 'i','the','and','you']
+ADDITIONAL_WORDS_REMOVAL = ['ay', 'oh', 'pa', 'tá', 'eh','yeah', 'i','the','and','you', 'to', 'ah', 'ey', 'na', 'it', 'your','my','co','this','uh','te','me','el,'se','al','la','lo','los','las','mi','a','tuyo','tuyos','mio','mia','mios','mias','mis','suyo', 'suyos','tu','su','sus','tus', 'a-ah','él','usted', 'ustedes']
 
 # CHatGpt prompts
 ##### Find single song theme #####
@@ -65,7 +65,7 @@ CHATGPT_MODEL_CONTEXT_WINDOW = 128000
 OPENAI_EMBEDDINGS_MODEL = 'text-embedding-3-small'
 
 THEME_PROMPT = 'write the theme of the song in short sentence:\nWrite like this - The song  theme is: ...\nThe song:\n\n{song}\n\n'
-SENTIMENT_PROMPT='analyis the overall sentiment in terms of:\nneural, positive, negative\nfor the following song:\n\n{song}\n\nnwrite only in json formt with the appropriate decimal percentage'
+SENTIMENT_PROMPT='analyis the overall sentiment in terms of:\nneural, positive, negative\nfor the following song:\n\n{song}\n\nwrite only in json format with the appropriate decimal percentage. Make sure the sentiment percentage sum to 1.'
 ###################################
 
 ##### Cluster all song themes to small number of general themes #####
