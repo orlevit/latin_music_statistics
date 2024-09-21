@@ -1,9 +1,5 @@
 removal additional words.
 
-1) Think again on the clusters
-- chnage the graphs order in themes by singer
-- Add version2 of the miscell
 2) check all values - sanity check
-3) add theme for specific artist?  how to determrnd the number of cluster? - what are the questions?
-4) ?Add free text option regrding the data - search?
 5) conclusions
+
