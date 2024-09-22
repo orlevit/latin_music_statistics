@@ -9,7 +9,7 @@ from collections import Counter
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 sys.path.append(os.path.abspath(os.path.join(parent_dir, "statistics_dir")))
-sys.path.append(os.path.abspath(os.path.join(parent_dir, "theme_and_sentiment")))
+sys.path.append(os.path.abspath(os.path.join(parent_dir, "theme_dir")))
 
 from statistics_dir.statistics import *
 from statistics_dir.statistics_helper import calculate_counts

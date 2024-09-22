@@ -53,7 +53,7 @@ NOT_BACHATA = [
     'Otra Noche Loca by Leoni Torres (Ft. Louis Mikán)'
 ]
 
-ADDITIONAL_WORDS_REMOVAL = ['ay', 'oh', 'pa', 'tá', 'eh','yeah', 'i','the','and','you', 'to', 'ah', 'ey', 'na', 'it', 'your','my','co','this','uh','te','me','el,'se','al','la','lo','los','las','mi','a','tuyo','tuyos','mio','mia','mios','mias','mis','suyo', 'suyos','tu','su','sus','tus', 'a-ah','él','usted', 'ustedes']
+ADDITIONAL_WORDS_REMOVAL = ['ay', 'oh', 'pa', 'tá', 'eh','yeah', 'i','the','and','you', 'to', 'ah', 'ey', 'na', 'it', 'your','my','co','this','uh','te','me','el','se','al','la','lo','los','las','mi','a','tuyo','tuyos','mio','mia','mios','mias','mis','suyo', 'suyos','tu','su','sus','tus', 'a-ah','él','usted', 'ustedes', 'soy', 'ser']
 
 # CHatGpt prompts
 ##### Find single song theme #####

@@ -32,7 +32,7 @@ def plot_top_percentage(
     if sentiment_colors is None:
         sentiment_colors = "skyblue"
     else:
-        sentiment_colors = top_df["Sentiment"].map(sentiment_colors)
+        sentiment_colors = top_df["Sentiment"].map(sentiment_colors).fillna('gray')
 
     # Create the bar plot
     bars = plt.bar(top_df.iloc[:, 0], top_df["Percentage"], color=sentiment_colors)
@@ -156,10 +156,15 @@ def wordcloud_func(df):
     words_dict = df.set_index("norm_words")["Frequency"].to_dict()
     wordcloud = WordCloud(width=800, height=400, background_color="white")
     wordcloud.generate_from_frequencies(words_dict)
+    
+    fig, ax = plt.subplots()
+    ax.imshow(wordcloud, interpolation="bilinear")
+    ax.axis("off")  # Turn off the axis
+    st.pyplot(fig)
 
-    plt.imshow(wordcloud, interpolation="bilinear")
-    plt.axis("off")
-    st.pyplot(plt)
+    #plt.imshow(wordcloud, interpolation="bilinear")
+    #plt.axis("off")
+    #st.pyplot(plt)
 
 
 def gui_template(
@@ -173,7 +178,6 @@ def gui_template(
     theme_insight,
 ):
 
-    sentiment_colors = {"positive": "green", "negative": "red", "neutral": "yellow"}
 
     (
         artist_stat,
