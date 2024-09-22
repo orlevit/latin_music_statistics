@@ -81,3 +81,5 @@ SENTIMENT_COLORS = {
         'negative': 'red',
         'neutral': 'yellow'
     }
+
+SENTIMENT = ["negative", "positive", "neutral"]

@@ -20,7 +20,7 @@ def general_statistics(df):
     gt_stat = calc_general_themes_counts(df, "general_theme")
     sentiment_single_dist = dist_single_sentiment(df, "selected_sentiment")
     sentiment_avg_dist = dist_avg_sentiment(df, "sentiment")
-    avg_words_per_song = int(df["norm_w_len"].mean())
+    avg_meaningfull_unique_words_per_song = int(df["norm_w_len"].mean())
 
     return (
         artist_stat,
@@ -28,7 +28,7 @@ def general_statistics(df):
         gt_stat,
         sentiment_single_dist,
         sentiment_avg_dist,
-        avg_words_per_song,
+        avg_meaningfull_unique_words_per_song,
     )
 
 

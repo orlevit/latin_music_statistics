@@ -14,7 +14,7 @@ from clustering_general_theme import find_themes_specific_artist
 from general_functions import center_text
 from statistics_dir.statistics import *
 from conclusion_text import *
-from config import SENTIMENT_COLORS
+from config import SENTIMENT_COLORS, SENTIMENT
 
 
 def plot_top_percentage(
@@ -87,7 +87,7 @@ def plot_top_samples_with_sentiments(
         item.set_fontsize(20)
     # Set colors for different sentiments
 
-    sentiment_labels = ["negative", "positive", "neutral"]
+    sentiment_labels = SENTIMENT
     # Plot each sentiment for the top categories
     for key_name, stats in top_n_samples.items():
         base_value = 0  # Start from the bottom for each bar
@@ -95,7 +95,7 @@ def plot_top_samples_with_sentiments(
         # Get the sentiment data from the current theme
         sentiments = stats["Sentiments"]
 
-        for sentiment in ["negative", "positive", "neutral"]:
+        for sentiment in SENTIMENT:
             count = sentiments.get(sentiment, 0)  # Default to 0 if sentiment not found
             sentiment_percentage = (count / stats["Frequency"]) * stats["Percentage"]
 
@@ -239,7 +239,7 @@ def gui_template(
         )
 
         st.write(
-            "The maximum sentiment percentage is selected as the single song sentiment:"
+            "The maximum sentiment percentage is selected to represent the overall sentiment of the song:"
         )
         plot_top_percentage(
             df=sentiment_single_dist,
@@ -264,8 +264,6 @@ def gui_template(
 
     elif analysis_option == "Artist":
 
-        st.subheader("Conclusions")
-        st.markdown(artist_insight)
         plot_top_samples_with_sentiments(
             nested_dict=artist_stat,
             x_label="Artist",
@@ -273,6 +271,9 @@ def gui_template(
             sentiment_colors=SENTIMENT_COLORS,
             rotation=90,
         )
+        st.subheader("Conclusions")
+        st.markdown(artist_insight)
+
     elif analysis_option == "Theme":
         # Plot specific themes
         if specific_artist_name != "":
