@@ -37,6 +37,9 @@ print(f'After filtering non Bachata songs: {len(df_spanish)} songs')
 normalized_words(df_spanish, 'clean_lyrics', 'norm_words')
 df_spanish['norm_words'] = df_spanish['norm_words'].apply(remove_words)
 df_spanish['norm_w_len'] = df_spanish['norm_words'].apply(lambda x: len(x))
+df_spanish['norm_unique_words'] = df_spanish['norm_words'].apply(lambda x: set(x))
+df_spanish['norm_unique_w_len'] = df_spanish['norm_unique_words'].apply(lambda x: len(x))
+
 calc_sentiment(df_spanish)
 
 df_spanish['all_artists'] = df_spanish.apply(lambda row: eval(row['artists']) + eval(row['featured_artists']), axis=1)

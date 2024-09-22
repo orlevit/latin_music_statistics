@@ -181,7 +181,8 @@ def gui_template(
 
     (
         artist_stat,
-        norm_words_stat,
+        norm_words_stat_freq,
+        # norm_words_stat_freq_sent,
         theme_stat,
         sentiment_single_dist,
         sentiment_avg_dist,
@@ -195,7 +196,7 @@ def gui_template(
             f"<h1 style='text-align: center;'>{title}</h1>",
             unsafe_allow_html=True,
         )
-        wordcloud_func(norm_words_stat)
+        wordcloud_func(norm_words_stat_freq)
         single_sentiment_markdown = max_sentiment_to_text(sentiment_single_dist)
         avg_sentiment_markdown = avg_sentiment_to_text(sentiment_avg_dist)
 
@@ -215,13 +216,21 @@ def gui_template(
             unsafe_allow_html=True,
         )
         plot_top_percentage(
-            df=norm_words_stat,
+            df=norm_words_stat_freq,
             x_label="Words",
             title="Words Percentage",
             rotation=90,
             samples_num=20,
         )
 
+        # plot_top_samples_with_sentiments(
+        #     nested_dict=norm_words_stat_freq_sent,
+        #     x_label="Words",
+        #     title="Words Percentage",
+        #     sentiment_colors=SENTIMENT_COLORS,
+        #     rotation=90,
+        #     samples_num=20
+        # )
         st.subheader("Conclusions")
         st.markdown(word_insight)
 

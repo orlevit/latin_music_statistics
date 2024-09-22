@@ -16,15 +16,17 @@ def general_statistics(df):
         pass
 
     artist_stat = calculate_counts_with_sentiment(df, "all_artists", "selected_sentiment")
-    norm_words_stat = calculate_counts(df, "norm_words") 
+    norm_words_stat_freq = calculate_counts(df, "norm_words") 
+    #norm_words_stat_freq_sent = calculate_counts_with_sentiment(df, "norm_words", "selected_sentiment")
     gt_stat = calc_general_themes_counts(df, "general_theme")
     sentiment_single_dist = dist_single_sentiment(df, "selected_sentiment")
     sentiment_avg_dist = dist_avg_sentiment(df, "sentiment")
-    avg_meaningfull_unique_words_per_song = int(df["norm_w_len"].mean())
+    avg_meaningfull_unique_words_per_song = int(df["norm_unique_w_len"].mean())
 
     return (
         artist_stat,
-        norm_words_stat,
+        norm_words_stat_freq,
+        #norm_words_stat_freq_sent,
         gt_stat,
         sentiment_single_dist,
         sentiment_avg_dist,
