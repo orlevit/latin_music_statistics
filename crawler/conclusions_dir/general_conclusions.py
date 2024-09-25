@@ -36,29 +36,3 @@ GENERAL_THEME_INSIGHT = """
         - The predominant themes identified are "Toxic Relationships," "Love and Relationships," and "Heartbreak and Loss." Notably, many of the songs delve into the complexities of deep emotional connections, often focusing on ongoing or concluded relationships rather than those in their initial stages. When exploring the theme of "Critique of Love," it becomes evident that this encompasses a broader critique of love itself, as well as specific commentary on contemporary relationships.
         """
 
-
-# Per artist
-ARTIST_GENERAL_INSIGHT = """
-- Artist statistics:
-    1. There are {len_songs} songs for this artist.
-    2. {single_sentiment}
-    3. {avg_sentiment}    
-    4. The average words per song is: {avg_song_len}.except
-    """
-
-
-def max_sentiment_to_text(df):
-    markdown = "Single sentiment Distribution (The maximum sentiment percentage is selected as the single song sentiment)\n"
-    for index, row in df.iterrows():
-        markdown += f" \t \t - {row['Sentiment']} (Frequency: {row['Frequency']} | Percentage: {row['Percentage']:.2f}%)\n"
-        
-    return markdown
-
-def avg_sentiment_to_text(df):
-    markdown = "Average sentiment Distribution (Averaging all the sentiments of the songs)\n"
-    
-    for index, row in df.iterrows():
-         markdown += f" \t \t - {row['Sentiment']} (Percentage: {row['Percentage']:.2f}%)\n"
-        
-    return markdown
-    

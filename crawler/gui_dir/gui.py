@@ -10,6 +10,7 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 sys.path.append(os.path.abspath(os.path.join(parent_dir, "statistics_dir")))
 sys.path.append(os.path.abspath(os.path.join(parent_dir, "theme_dir")))
+sys.path.append(os.path.abspath(os.path.join(parent_dir, "conclusions_dir")))
 
 from statistics_dir.statistics import *
 from statistics_dir.statistics_helper import calculate_counts
@@ -20,6 +21,11 @@ from config import (
     DATA_THEME_SINGERS_DIR,
     SENTIMENT_COLORS,
 )
+from general_conclusions import  GENERAL_WORD_INSIGHT, GENERAL_ARTIST_INSIGHT, GENERAL_SENTIMENT_INSIGHT, GENERAL_THEME_INSIGHT 
+
+from known_sentiment_conclusions import KNOWN_SENTIMENT_GENERAL_INSIGHT
+from known_artist_conclusions import KNOWN_ARTIST_GENERAL_INSIGHT
+
 from conclusion_text import *
 from gui_helper import *
 from clustering_general_theme import load_artist_theme_df
@@ -62,6 +68,9 @@ if options == "Known Sentiment":
         sentiment_insight=GENERAL_SENTIMENT_INSIGHT,
         artist_insight=GENERAL_ARTIST_INSIGHT,
         theme_insight=GENERAL_THEME_INSIGHT,
+        out_of_total_percentage=False,
+        present_sentiments=[sentiment_options.lower()],
+        df_total=df
     )
 
 if options == "Known Artist":

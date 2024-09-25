@@ -9,7 +9,7 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 
 
-def general_statistics(df):
+def general_statistics(df):       
     try:
         df.loc[:, "all_artists"] = df["all_artists"].apply(lambda x: eval(x))
     except (TypeError, NameError, SyntaxError) as e:

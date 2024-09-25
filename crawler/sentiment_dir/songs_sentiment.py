@@ -42,8 +42,6 @@ def get_dominant_sentiment(sentiment_dict_input):
 
    # print(sentiment_dict)
     if sentiment_dict['positive'] == sentiment_dict['negative']:
-        #print(sentiment_dict_input)
-        print('1')
         dominant_sentiment = 'neutral'
     else:
         dominant_sentiment = max(sentiment_dict, key=sentiment_dict.get)

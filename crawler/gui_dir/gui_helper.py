@@ -8,12 +8,15 @@ from wordcloud import WordCloud
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 sys.path.append(os.path.abspath(os.path.join(parent_dir, "statistics_dir")))
-sys.path.append(os.path.abspath(os.path.join(parent_dir, "theme_and_sentiment")))
+sys.path.append(os.path.abspath(os.path.join(parent_dir, "sentiment_dir")))
+sys.path.append(os.path.abspath(os.path.join(parent_dir, "theme_dir")))
+sys.path.append(os.path.abspath(os.path.join(parent_dir, "conclusions_dir")))
 
 from clustering_general_theme import find_themes_specific_artist
 from general_functions import center_text
 from statistics_dir.statistics import *
 from conclusion_text import *
+from general_conclusions import  GENERAL_GENERAL_INSIGHT
 from config import SENTIMENT_COLORS, SENTIMENT
 
 
@@ -69,8 +72,9 @@ def plot_top_samples_with_sentiments(
     annot_bar=True,
     rotation=0,
     samples_num=10,
+    out_of_total_percentage=True,
+    sentiment_labels = SENTIMENT
 ):
-
     # Taking the top N samples
     top_n_samples = dict(
         list(nested_dict.items())[:samples_num]
@@ -87,7 +91,6 @@ def plot_top_samples_with_sentiments(
         item.set_fontsize(20)
     # Set colors for different sentiments
 
-    sentiment_labels = SENTIMENT
     # Plot each sentiment for the top categories
     for key_name, stats in top_n_samples.items():
         base_value = 0  # Start from the bottom for each bar
@@ -95,9 +98,13 @@ def plot_top_samples_with_sentiments(
         # Get the sentiment data from the current theme
         sentiments = stats["Sentiments"]
 
-        for sentiment in SENTIMENT:
-            count = sentiments.get(sentiment, 0)  # Default to 0 if sentiment not found
-            sentiment_percentage = (count / stats["Frequency"]) * stats["Percentage"]
+        for sentiment in sentiment_labels:
+            count = sentiments.get(sentiment, 0)  # Default to 0 if sentiment not found'
+            denominator = max(stats["Frequency"], 1)
+            if out_of_total_percentage:
+                sentiment_percentage = (count / denominator) * stats["Percentage"]
+            else:
+                sentiment_percentage = stats["Percentage"]
 
             # Plot each sentiment as a stacked bar
             if count > 0:  # Only plot non-zero counts
@@ -105,7 +112,7 @@ def plot_top_samples_with_sentiments(
                     key_name,
                     sentiment_percentage,
                     bottom=base_value,
-                    color=SENTIMENT_COLORS.get(sentiment, "blue"),
+                    color=sentiment_colors.get(sentiment, "blue"),
                 )
 
                 # Annotate each sentiment's count in the middle of its segment
@@ -128,12 +135,12 @@ def plot_top_samples_with_sentiments(
         ax.bar(
             key_name,
             0,  # Dummy bar for the legend
-            color=SENTIMENT_COLORS[sentiment],
+            color=sentiment_colors[sentiment],
             label=sentiment,
         )
 
     ax.set_xlabel(x_label)
-    ax.set_ylabel("Count")
+    ax.set_ylabel("Percentage")
     ax.set_title(title, fontsize=20)
     ax.legend(
         title="Sentiment",
@@ -176,6 +183,9 @@ def gui_template(
     sentiment_insight,
     artist_insight,
     theme_insight,
+    out_of_total_percentage=True,
+    present_sentiments=SENTIMENT,
+    df_total=None   
 ):
 
 
@@ -188,6 +198,15 @@ def gui_template(
         sentiment_avg_dist,
         avg_words_per_song,
     ) = general_statistics(df)
+
+    # Added a custom function for a specific case (Known sentiment: Artist). It still needs to be integrated more smoothly.
+    if df_total is not None:
+        try:
+            df_total.loc[:, "all_artists"] = df_total["all_artists"].apply(lambda x: eval(x))
+        except (TypeError, NameError, SyntaxError) as e:
+            pass
+
+        artist_stat = known_sentiment_artists_calc_counts_with_sentiment(df_total, "all_artists", "selected_sentiment", present_sentiments)
 
     analysis_option = st.sidebar.selectbox("Select analysis", options)
 
@@ -223,6 +242,7 @@ def gui_template(
             samples_num=20,
         )
 
+        ## Graph with all sentiments
         # plot_top_samples_with_sentiments(
         #     nested_dict=norm_words_stat_freq_sent,
         #     x_label="Words",
@@ -276,9 +296,11 @@ def gui_template(
         plot_top_samples_with_sentiments(
             nested_dict=artist_stat,
             x_label="Artist",
-            title="Artist Percentage",
+            title="Artist Counts",
             sentiment_colors=SENTIMENT_COLORS,
             rotation=90,
+            out_of_total_percentage=out_of_total_percentage,
+            sentiment_labels=present_sentiments
         )
         st.subheader("Conclusions")
         st.markdown(artist_insight)
@@ -298,10 +320,10 @@ def gui_template(
             plot_top_samples_with_sentiments(
                 nested_dict=specific_artist_theme_stat,
                 x_label="Theme",
-                title="Theme percentage",
+                title="Theme Counts",
                 sentiment_colors=SENTIMENT_COLORS,
                 rotation=90,
-                samples_num=len(specific_artist_theme_stat)
+                samples_num=len(specific_artist_theme_stat),
             )
 
 #            st.subheader("-" * 60)
@@ -312,10 +334,10 @@ def gui_template(
         plot_top_samples_with_sentiments(
             nested_dict=theme_stat,
             x_label="Theme",
-            title="Theme percentage",
+            title="Theme Counts",
             sentiment_colors=SENTIMENT_COLORS,
             rotation=90,
-            samples_num=len(theme_stat)
+            samples_num=len(theme_stat),
         )
 
         st.subheader("Conclusions")

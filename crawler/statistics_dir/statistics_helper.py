@@ -35,8 +35,44 @@ def calc_general_themes_counts(df_org, col):
         gt_stat['Miscellaneous'] = gt_stat.pop('Miscellaneous')
     
     return gt_stat
+
+
+# Added a custom function for a specific case. It still needs to be integrated more smoothly.
+def known_sentiment_artists_calc_counts_with_sentiment(df, col, sentiment_col, sentiment_order):
+    df_expanded = df.explode(col)
+
+    # Calculate frequency and percentage for the main column
+    all_counts = df_expanded[col].value_counts()
+
+    stats_df = pd.DataFrame({
+        col: all_counts.index,
+        'Frequency': all_counts.values,
+    })
+
+    # Create nested dictionary to hold sentiments within each category
+    nested_dict = {}
+    for col_value in stats_df[col]:
+        singer_frequency = int(all_counts[col_value])        
+        selected_df = df_expanded[df_expanded[col] == col_value]
+        sentiment_counts = selected_df[sentiment_col].value_counts()
+
+        # Ensure the sentiment order is always "Negative", "Positive", "Neutral"
+        ordered_sentiments =  list(sentiment_counts.keys())
+        ordered_counts = {sentiment: sentiment_counts.get(sentiment, 0) for sentiment in ordered_sentiments}
+        sent_counts = sentiment_counts.get(sentiment_order[0], 0)
         
-def calculate_counts_with_sentiment(df, col, sentiment_col):
+        nested_dict[col_value] = {
+            'Frequency': sent_counts,
+            'Percentage': round(sent_counts/singer_frequency, 2),
+            'Sentiments': ordered_counts
+        }
+    top_sorted_data = dict(sorted(nested_dict.items(), key=lambda item: item[1]['Frequency'], reverse=True)[:10])
+    sorted_data = dict(sorted(top_sorted_data.items(), key=lambda item: item[1]['Sentiments'].get(sentiment_order[0], 0), reverse=True))
+
+    return sorted_data
+    
+
+def calculate_counts_with_sentiment(df, col, sentiment_col, sentiment_order=None):
     df_expanded = df.explode(col)
 
     # Calculate frequency and percentage for the main column
@@ -67,6 +103,8 @@ def calculate_counts_with_sentiment(df, col, sentiment_col):
         }
 
     sorted_data = dict(sorted(nested_dict.items(), key=lambda item: item[1]['Frequency'], reverse=True))
+
+    # sorted_data = order_nested_dict(nested_dict, sentiment_order)
 
     return sorted_data
 
