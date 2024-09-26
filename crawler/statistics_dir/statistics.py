@@ -22,7 +22,7 @@ def general_statistics(df):
     sentiment_single_dist = dist_single_sentiment(df, "selected_sentiment")
     sentiment_avg_dist = dist_avg_sentiment(df, "sentiment")
     avg_meaningfull_unique_words_per_song = int(df["norm_unique_w_len"].mean())
-
+    women_percentage, men_percentage, both_percentage = gender_stat(df)
     return (
         artist_stat,
         norm_words_stat_freq,
@@ -31,6 +31,7 @@ def general_statistics(df):
         sentiment_single_dist,
         sentiment_avg_dist,
         avg_meaningfull_unique_words_per_song,
+        women_percentage, men_percentage, both_percentage
     )
 
 

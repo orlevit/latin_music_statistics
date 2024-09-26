@@ -5,6 +5,7 @@ GENERAL_GENERAL_INSIGHT = """
     3. {single_sentiment}
     4. {avg_sentiment}    
     5. The average unique words per song is: {avg_song_len}.
+    6. The prominent singer percentage: Women ({women_percentage}%), Men ({men_percentage}%), Both ({both_percentage}%).
     """
 
 GENERAL_WORD_INSIGHT ="""

@@ -21,13 +21,12 @@ from config import (
     DATA_THEME_SINGERS_DIR,
     SENTIMENT_COLORS,
 )
-from general_conclusions import  GENERAL_WORD_INSIGHT, GENERAL_ARTIST_INSIGHT, GENERAL_SENTIMENT_INSIGHT, GENERAL_THEME_INSIGHT 
 
-from known_sentiment_conclusions import KNOWN_SENTIMENT_GENERAL_INSIGHT
-from known_artist_conclusions import KNOWN_ARTIST_GENERAL_INSIGHT
-
-from conclusion_text import *
 from gui_helper import *
+from conclusion_text import *
+from general_conclusions import *
+from known_artist_conclusions import *
+from known_sentiment_conclusions import *
 from clustering_general_theme import load_artist_theme_df
 
 
@@ -64,10 +63,10 @@ if options == "Known Sentiment":
         sen_title,
         options=["General", "Word", "Artist", "Theme", "Data"],
         specific_artist_name="",
-        word_insight=GENERAL_WORD_INSIGHT,
-        sentiment_insight=GENERAL_SENTIMENT_INSIGHT,
-        artist_insight=GENERAL_ARTIST_INSIGHT,
-        theme_insight=GENERAL_THEME_INSIGHT,
+        word_insight=KNOWN_SENTIMENT_WORD_INSIGHT,
+        sentiment_insight='',
+        artist_insight=KNOWN_SENTIMENT_ARTIST_INSIGHT,
+        theme_insight=KNOWN_SENTIMENT_THEME_INSIGHT,
         out_of_total_percentage=False,
         present_sentiments=[sentiment_options.lower()],
         df_total=df
@@ -95,8 +94,8 @@ if options == "Known Artist":
         artist_title,
         options=["General", "Word", "Sentiment", "Theme", "Data"],
         specific_artist_name=artist_options,
-        word_insight=GENERAL_WORD_INSIGHT,
-        sentiment_insight=GENERAL_SENTIMENT_INSIGHT,
-        artist_insight=GENERAL_ARTIST_INSIGHT,
-        theme_insight=GENERAL_THEME_INSIGHT,
+        word_insight=KNOWN_ARTIST_WORD_INSIGHT,
+        sentiment_insight='',
+        artist_insight='',
+        theme_insight=KNOWN_ARTIST_THEME_INSIGHT,
     )

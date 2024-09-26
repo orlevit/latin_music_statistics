@@ -65,7 +65,11 @@ CHATGPT_MODEL_CONTEXT_WINDOW = 128000
 OPENAI_EMBEDDINGS_MODEL = 'text-embedding-3-small'
 
 THEME_PROMPT = 'write the theme of the song in short sentence:\nWrite like this - The song  theme is: ...\nThe song:\n\n{song}\n\n'
-SENTIMENT_PROMPT='analyis the overall sentiment in terms of:\nneural, positive, negative\nfor the following song:\n\n{song}\n\nwrite only in json format with the appropriate decimal percentage. Make sure the sentiment percentage sum to 1.'
+SENTIMENT_PROMPT='analyze the overall sentiment in terms of:\nneural, positive, negative\nfor the following song:\n\n{song}\n\nwrite only in json format with the appropriate decimal percentage. Make sure the sentiment percentage sum to 1.'
+FAILED_ADD_SENTIMENT_TEXT = "Make sure that one of the sentiments has the highest value\nMake sure the sentiment percentage sum to 1."
+
+ARTIST_GENDER_PROMPR='analyze the gender of the prominent artist, which can be one of the follows:\nMale, Female, Both\nThe artist name and song title following by the lyrics is: {song}\nMake sure it has this Json format: {{"gender": "Male"/"Female"/"Both"}}.\nWrite only the dict without additional text.'
+
 ###################################
 
 ##### Cluster all song themes to small number of general themes #####

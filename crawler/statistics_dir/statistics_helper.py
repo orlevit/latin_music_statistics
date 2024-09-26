@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 
@@ -157,3 +158,11 @@ def avg_word_per_song(df, col):
     df['unique_word_count'] = df[col].apply(len)
     average_unique_words = df['unique_word_count'].mean()
     return average_unique_words
+
+def gender_stat(df):
+    df_len = len(df)
+    men_p = np.round(len(df[df['gender'] == 'Male']) / df_len, 2)
+    women_p = np.round(len(df[df['gender'] == 'Female']) / df_len, 2)
+    both_p = np.round(len(df[df['gender'] == 'Both']) / df_len, 2)
+
+    return women_p, men_p, both_p

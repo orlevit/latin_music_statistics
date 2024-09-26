@@ -197,6 +197,7 @@ def gui_template(
         sentiment_single_dist,
         sentiment_avg_dist,
         avg_words_per_song,
+        women_percentage, men_percentage, both_percentage
     ) = general_statistics(df)
 
     # Added a custom function for a specific case (Known sentiment: Artist). It still needs to be integrated more smoothly.
@@ -226,6 +227,9 @@ def gui_template(
                 single_sentiment=single_sentiment_markdown,
                 avg_sentiment=avg_sentiment_markdown,
                 avg_song_len=avg_words_per_song,
+                women_percentage=women_percentage, 
+                men_percentage=men_percentage, 
+                both_percentage=both_percentage
             )
         )
 
@@ -287,6 +291,7 @@ def gui_template(
                     "theme",
                     "general_theme",
                     "selected_sentiment",
+                    "gender"
                 ]
             ]
         )
