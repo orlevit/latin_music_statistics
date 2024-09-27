@@ -20,6 +20,7 @@ from config import (
     GENERAL_SONGS_THEMS,
     DATA_THEME_SINGERS_DIR,
     SENTIMENT_COLORS,
+    SENT_ARTIST_GRAPH_DESC
 )
 
 from gui_helper import *
@@ -67,6 +68,7 @@ if options == "Known Sentiment":
         sentiment_insight='',
         artist_insight=KNOWN_SENTIMENT_ARTIST_INSIGHT,
         theme_insight=KNOWN_SENTIMENT_THEME_INSIGHT,
+        sent_artist_graph_desc=SENT_ARTIST_GRAPH_DESC,      
         out_of_total_percentage=False,
         present_sentiments=[sentiment_options.lower()],
         df_total=df
@@ -97,5 +99,5 @@ if options == "Known Artist":
         word_insight=KNOWN_ARTIST_WORD_INSIGHT,
         sentiment_insight='',
         artist_insight='',
-        theme_insight=KNOWN_ARTIST_THEME_INSIGHT,
+        theme_insight=KNOWN_ARTIST_THEME_INSIGHT,        
     )

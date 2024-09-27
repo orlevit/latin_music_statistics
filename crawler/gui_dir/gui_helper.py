@@ -183,6 +183,7 @@ def gui_template(
     sentiment_insight,
     artist_insight,
     theme_insight,
+    sent_artist_graph_desc='',    
     out_of_total_percentage=True,
     present_sentiments=SENTIMENT,
     df_total=None   
@@ -282,20 +283,6 @@ def gui_template(
             rotation=0,
         )
 
-    elif analysis_option == "Data":
-        st.dataframe(
-            df[
-                [
-                    "title_with_artists",
-                    "sentiment",
-                    "theme",
-                    "general_theme",
-                    "selected_sentiment",
-                    "gender"
-                ]
-            ]
-        )
-
     elif analysis_option == "Artist":
 
         plot_top_samples_with_sentiments(
@@ -307,6 +294,8 @@ def gui_template(
             out_of_total_percentage=out_of_total_percentage,
             sentiment_labels=present_sentiments
         )
+        
+        st.markdown(sent_artist_graph_desc)        
         st.subheader("Conclusions")
         st.markdown(artist_insight)
 
@@ -347,3 +336,17 @@ def gui_template(
 
         st.subheader("Conclusions")
         st.markdown(theme_insight)
+
+    elif analysis_option == "Data":
+        st.dataframe(
+            df[
+                [
+                    "title_with_artists",
+                    "sentiment",
+                    "theme",
+                    "general_theme",
+                    "selected_sentiment",
+                    "gender"
+                ]
+            ]
+        )

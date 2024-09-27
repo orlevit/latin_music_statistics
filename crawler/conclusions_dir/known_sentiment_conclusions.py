@@ -4,9 +4,11 @@ KNOWN_SENTIMENT_WORD_INSIGHT = """
         - When the sentiment is "Negative" the word "Morir" frequently appears, suggesting that when the singer suffers, it is in its most extreme form.
 """
 
-KNOWN_SENTIMENT_ARTIST_INSIGHT = """ ???????????????????????
-        - The most likely singers the are:()
-        -         
+KNOWN_SENTIMENT_ARTIST_INSIGHT = """
+        - An analysis of artists with a substantial discography (over 20 songs) reveals that:
+            * Prince Royce stands out as one of the most positive, with approximately every other song carrying an upbeat or optimistic tone.
+            * Frank Reyes as one of the most negative artists, with nearly 80% of his tracks expressing predominantly negative sentiment.
+        - Interestingly, although Juan Luis Guerra does not have an extensive catalog of songs, each one carries a positive sentiment.
 """
 
 KNOWN_SENTIMENT_THEME_INSIGHT = """ 

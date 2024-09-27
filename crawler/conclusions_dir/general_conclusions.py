@@ -16,10 +16,10 @@ GENERAL_WORD_INSIGHT ="""
         """
 
 GENERAL_ARTIST_INSIGHT = """
-        - The five most frequent artists appear in 36% of the songs, with a significant drop in the presence of other artists beyond this point. This indicates that the vocabulary, sentiment, and themes conveyed by these prominent artists have a major impact on the overall statistics.
-        - "Frank Reyes" and "Ralphy Dreamz" tend to produce a significantly higher volume of negative-themed songs compared to their peers.
-        - "Prince Royce" is recognized as one of the most optimistic and positive artists in the music industry.
-        * Only songs featuring more than 20 samples are considered.
+        - Only artists with more than 20 songs are included in the analysis:
+            * The five most frequent artists appear in 36% of the songs, with a significant drop in the presence of other artists beyond this point. This indicates that the vocabulary, sentiment, and themes conveyed by these prominent artists have a major impact on the overall statistics.
+            * "Frank Reyes" and "Ralphy Dreamz" tend to produce a significantly higher volume of negative-themed songs compared to their peers.
+            * "Prince Royce" is recognized as one of the most optimistic and positive artists in the music industry.
         """
 
 GENERAL_SENTIMENT_INSIGHT = """

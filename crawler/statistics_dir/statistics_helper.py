@@ -49,7 +49,7 @@ def known_sentiment_artists_calc_counts_with_sentiment(df, col, sentiment_col, s
         col: all_counts.index,
         'Frequency': all_counts.values,
     })
-
+    
     # Create nested dictionary to hold sentiments within each category
     nested_dict = {}
     for col_value in stats_df[col]:
@@ -61,7 +61,7 @@ def known_sentiment_artists_calc_counts_with_sentiment(df, col, sentiment_col, s
         ordered_sentiments =  list(sentiment_counts.keys())
         ordered_counts = {sentiment: sentiment_counts.get(sentiment, 0) for sentiment in ordered_sentiments}
         sent_counts = sentiment_counts.get(sentiment_order[0], 0)
-        
+
         nested_dict[col_value] = {
             'Frequency': sent_counts,
             'Percentage': round(sent_counts/singer_frequency, 2),
