@@ -146,7 +146,7 @@ def dist_avg_sentiment(df, col):
         sen_list.append(eval(v))
     
     df_sentiment_raw = pd.DataFrame(sen_list)
-    df_series_sentiment = df_sentiment_raw.mean()
+    df_series_sentiment = df_sentiment_raw.mean() * 100 
     df_sentiment = df_series_sentiment.reset_index()
     df_sentiment.columns = ['Sentiment', 'Percentage']
 
@@ -161,8 +161,8 @@ def avg_word_per_song(df, col):
 
 def gender_stat(df):
     df_len = len(df)
-    men_p = np.round(len(df[df['gender'] == 'Male']) / df_len, 2)
-    women_p = np.round(len(df[df['gender'] == 'Female']) / df_len, 2)
-    both_p = np.round(len(df[df['gender'] == 'Both']) / df_len, 2)
+    men_p = np.round((len(df[df['gender'] == 'Male']) / df_len) * 100, 2)
+    women_p = np.round((len(df[df['gender'] == 'Female']) / df_len) * 100, 2)
+    both_p = np.round((len(df[df['gender'] == 'Both']) / df_len) * 100, 2)
 
     return women_p, men_p, both_p

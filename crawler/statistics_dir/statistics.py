@@ -17,7 +17,7 @@ def general_statistics(df):
 
     artist_stat = calculate_counts_with_sentiment(df, "all_artists", "selected_sentiment")
     norm_words_stat_freq = calculate_counts(df, "norm_words") 
-    #norm_words_stat_freq_sent = calculate_counts_with_sentiment(df, "norm_words", "selected_sentiment")
+    # norm_words_stat_freq_sent = calculate_counts_with_sentiment(df, "norm_unique_words", "selected_sentiment")
     gt_stat = calc_general_themes_counts(df, "general_theme")
     sentiment_single_dist = dist_single_sentiment(df, "selected_sentiment")
     sentiment_avg_dist = dist_avg_sentiment(df, "sentiment")
