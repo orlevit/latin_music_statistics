@@ -186,12 +186,16 @@ def gui_template(
     sent_artist_graph_desc='',    
     out_of_total_percentage=True,
     present_sentiments=SENTIMENT,
-    df_total=None   
+    df_total=None, 
+    explain_words='',
+    explain_sentiments='',
+    explain_artists='',
+    explain_themes=''
 ):
-
 
     (
         artist_stat,
+        artist_stat_len,
         norm_words_stat_freq,
         #norm_words_stat_freq_sent,
         theme_stat,
@@ -208,7 +212,7 @@ def gui_template(
         except (TypeError, NameError, SyntaxError) as e:
             pass
 
-        artist_stat = known_sentiment_artists_calc_counts_with_sentiment(df_total, "all_artists", "selected_sentiment", present_sentiments)
+        artist_stat, artist_stat_len = known_sentiment_artists_calc_counts_with_sentiment(df_total, "all_artists", "selected_sentiment", present_sentiments)
 
     analysis_option = st.sidebar.selectbox("Select analysis", options)
 
@@ -224,7 +228,7 @@ def gui_template(
         st.markdown(
             GENERAL_GENERAL_INSIGHT.format(
                 len_songs=len(df),
-                len_diff_artists=len(artist_stat),
+                len_diff_artists=artist_stat_len,
                 single_sentiment=single_sentiment_markdown,
                 avg_sentiment=avg_sentiment_markdown,
                 avg_song_len=avg_words_per_song,
@@ -236,10 +240,10 @@ def gui_template(
 
     elif analysis_option == "Word":
         st.markdown(
-            '<h4 style="font-size:15px;text-align: center;">Frequency & Percentage as function of the normalized words form</h4>',
+            '<h4 style="font-size:15px;text-align: center;">Normalized word form distribution</h4>',
             unsafe_allow_html=True,
         )
-
+        st.write(explain_words)
         plot_top_percentage(
             df=norm_words_stat_freq,
             x_label="Words",
@@ -266,6 +270,7 @@ def gui_template(
             '<h4 style="font-size:15px;text-align: center;">Average song sentiment (Averaging all the sentiments of the songs)</h4>',
             unsafe_allow_html=True,
         )
+        st.write(explain_sentiments)
 
         plot_top_percentage(
             df=sentiment_avg_dist,
@@ -294,11 +299,12 @@ def gui_template(
             '<h4 style="font-size:15px;text-align: center;">Artist distribuiton</h4>',
             unsafe_allow_html=True,
         )
+        st.write(explain_artists)
 
         plot_top_samples_with_sentiments(
             nested_dict=artist_stat,
             x_label="Artist",
-            title="Artist Counts",
+            title="Artist percentage",
             sentiment_colors=SENTIMENT_COLORS,
             rotation=90,
             out_of_total_percentage=out_of_total_percentage,
@@ -314,6 +320,7 @@ def gui_template(
             '<h4 style="font-size:15px;text-align: center;">Theme distribution</h4>',
             unsafe_allow_html=True,
         )
+        st.write(explain_themes)
         # Plot specific themes
         if specific_artist_name != "":
             specific_artist_themes_df = find_themes_specific_artist(
@@ -330,7 +337,7 @@ def gui_template(
             plot_top_samples_with_sentiments(
                 nested_dict=specific_artist_theme_stat,
                 x_label="Theme",
-                title="Theme Counts",
+                title="Theme percentage",
                 sentiment_colors=SENTIMENT_COLORS,
                 rotation=90,
                 samples_num=len(specific_artist_theme_stat),

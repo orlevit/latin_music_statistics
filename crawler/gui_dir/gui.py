@@ -14,15 +14,7 @@ sys.path.append(os.path.abspath(os.path.join(parent_dir, "conclusions_dir")))
 
 from statistics_dir.statistics import *
 from statistics_dir.statistics_helper import calculate_counts
-from config import (
-    FINAL_DATA_FILE,
-    TAG,
-    GENERAL_SONGS_THEMS,
-    DATA_THEME_SINGERS_DIR,
-    SENTIMENT_COLORS,
-    SENT_ARTIST_GRAPH_DESC
-)
-
+from config import *
 from gui_helper import *
 from conclusion_text import *
 from general_conclusions import *
@@ -53,6 +45,10 @@ if options == "General":
         sentiment_insight=GENERAL_SENTIMENT_INSIGHT,
         artist_insight=GENERAL_ARTIST_INSIGHT,
         theme_insight=GENERAL_THEME_INSIGHT,
+        explain_words=G_EXPLAIN_WORDS,
+        explain_sentiments=G_EXPLAIN_SENTIMENTS,
+        explain_artists=G_EXPLAIN_ARTISTS,
+        explain_themes=G_EXPLAIN_THEMES
     )
 
 if options == "Known Sentiment":
@@ -71,7 +67,11 @@ if options == "Known Sentiment":
         sent_artist_graph_desc=SENT_ARTIST_GRAPH_DESC,      
         out_of_total_percentage=False,
         present_sentiments=[sentiment_options.lower()],
-        df_total=df
+        df_total=df,
+        explain_words=G_EXPLAIN_WORDS,
+        explain_sentiments=G_EXPLAIN_SENTIMENTS,
+        explain_artists=G_EXPLAIN_KNOWN_SENTIMENT_ARTISTS,
+        explain_themes=G_EXPLAIN_THEMES
     )
 
 if options == "Known Artist":
@@ -85,7 +85,7 @@ if options == "Known Artist":
     sorted_elements = sorted(artist_counts, key=artist_counts.get, reverse=True)
 
     artist_options = st.sidebar.selectbox("Select ", sorted_elements)
-
+    art_word_ins, art_theme_ins = get_specific_artist_insights(artist_options)
     df_artist = df_all_artist[df_all_artist["all_artists"] == artist_options]
 
 
@@ -96,8 +96,12 @@ if options == "Known Artist":
         artist_title,
         options=["General", "Word", "Sentiment", "Theme", "Data"],
         specific_artist_name=artist_options,
-        word_insight=KNOWN_ARTIST_WORD_INSIGHT,
+        word_insight=art_word_ins,
         sentiment_insight='',
         artist_insight='',
-        theme_insight=KNOWN_ARTIST_THEME_INSIGHT,        
+        theme_insight=art_theme_ins,        
+        explain_words=G_EXPLAIN_WORDS,
+        explain_sentiments=G_EXPLAIN_SENTIMENTS,
+        explain_artists=G_EXPLAIN_ARTISTS,
+        explain_themes=G_EXPLAIN_KNOWN_ARTIST_THEMES
     )

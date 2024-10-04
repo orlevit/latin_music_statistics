@@ -15,7 +15,7 @@ def general_statistics(df):
     except (TypeError, NameError, SyntaxError) as e:
         pass
 
-    artist_stat = calculate_counts_with_sentiment(df, "all_artists", "selected_sentiment")
+    artist_stat, artist_stat_len = calculate_counts_with_sentiment(df, "all_artists", "selected_sentiment")
     norm_words_stat_freq = calculate_counts(df, "norm_words") 
     # norm_words_stat_freq_sent = calculate_counts_with_sentiment(df, "norm_unique_words", "selected_sentiment")
     gt_stat = calc_general_themes_counts(df, "general_theme")
@@ -25,6 +25,7 @@ def general_statistics(df):
     women_percentage, men_percentage, both_percentage = gender_stat(df)
     return (
         artist_stat,
+        artist_stat_len,
         norm_words_stat_freq,
         #norm_words_stat_freq_sent,
         gt_stat,

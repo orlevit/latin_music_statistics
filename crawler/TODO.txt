@@ -1,1 +1,6 @@
-
+sentimnet:
+0. write explanaiion for each graoh
+0.1. exlain that the colculsosn are general. - known sentiment\artist - specific?
+1. define sentiment with exsamples
+2. hear 50songs  - upbeat songs <-> positive sentiment?
+3. Check again to add sentiment to the words distributions

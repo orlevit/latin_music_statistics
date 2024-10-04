@@ -62,15 +62,17 @@ def known_sentiment_artists_calc_counts_with_sentiment(df, col, sentiment_col, s
         ordered_counts = {sentiment: sentiment_counts.get(sentiment, 0) for sentiment in ordered_sentiments}
         sent_counts = sentiment_counts.get(sentiment_order[0], 0)
 
-        nested_dict[col_value] = {
-            'Frequency': sent_counts,
-            'Percentage': round(sent_counts/singer_frequency, 2),
-            'Sentiments': ordered_counts
-        }
+        if sent_counts != 0:
+            nested_dict[col_value] = {
+                'Frequency': sent_counts,
+                'Percentage': round(sent_counts/singer_frequency, 2),
+                'Sentiments': ordered_counts
+            }
+    artist_stat_len = len(nested_dict)
     top_sorted_data = dict(sorted(nested_dict.items(), key=lambda item: item[1]['Frequency'], reverse=True)[:10])
     sorted_data = dict(sorted(top_sorted_data.items(), key=lambda item: item[1]['Sentiments'].get(sentiment_order[0], 0), reverse=True))
 
-    return sorted_data
+    return sorted_data, artist_stat_len
     
 
 def calculate_counts_with_sentiment(df, col, sentiment_col, sentiment_order=None):
@@ -104,10 +106,10 @@ def calculate_counts_with_sentiment(df, col, sentiment_col, sentiment_order=None
         }
 
     sorted_data = dict(sorted(nested_dict.items(), key=lambda item: item[1]['Frequency'], reverse=True))
-
+    artist_stat_len = len(sorted_data)
     # sorted_data = order_nested_dict(nested_dict, sentiment_order)
 
-    return sorted_data
+    return sorted_data, artist_stat_len
 
 def most_common_word(df, text_column, top=10):
 

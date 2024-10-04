@@ -90,3 +90,16 @@ SENTIMENT_COLORS = {
     }
 
 SENTIMENT = ["negative", "positive", "neutral"]
+
+
+####### Graph explanation
+G_EXPLAIN_WORDS = 'This graph illustrates the percentage of normalized word forms (e.g., quero/quise → querer), with the normalized word frequencies displayed above each bar.'
+G_EXPLAIN_SENTIMENTS = 'The percentage of phrases categorized as "negative," "positive," or "neutral" is recorded for each song.\n* "Average Sentiment Percentage": This represents the average of these sentiment percentages across all songs.\n* "Single Sentiment Percentage": Each song is classified based on its predominant sentiment and the percentage reflects the distribution of these predominant sentiments across the entire collection of songs.'
+
+G_EXPLAIN_ARTISTS = 'The percentage of songs and their corresponding sentiments for each artist, with frequencies displayed above each bar.'
+
+G_EXPLAIN_KNOWN_SENTIMENT_ARTISTS = 'The graph illustrates the percentage of songs exhibiting specific sentiments for each artist, relative to their total number of songs. The bars are arranged in descending order of frequency.'
+
+G_EXPLAIN_THEMES = 'The percentage of songs categorized by their sentiment distribution across general themes.'
+
+G_EXPLAIN_KNOWN_ARTIST_THEMES = 'The proportion of songs categorized according to their sentiment distribution across various themes, with frequencies displayed above each bar.\nThe first graph illustrates themes derived from the artist\'s songs.\nThe second graph presents themes generated from the total collection of songs, therefore general themes.'
