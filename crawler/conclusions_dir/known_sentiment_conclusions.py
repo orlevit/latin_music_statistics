@@ -15,7 +15,7 @@ KNOWN_SENTIMENT_ARTIST_INSIGHT_POSITIVE = """
         - Interestingly, although Juan Luis Guerra does not have an extensive catalog of songs, each one carries a positive sentiment.
 """
 KNOWN_SENTIMENT_ARTIST_INSIGHT_NEGATIVE = """
-        - An analysis of artists with a substanti al discography (over 20 songs) reveals that:
+        - An analysis of artists with a substantial discography (over 20 songs) reveals that:
             * Frank Reyes as one of the most negative artists, with nearly 80% of his tracks expressing predominantly negative sentiment.
 """
 # KNOWN_SENTIMENT_THEME_INSIGHT
