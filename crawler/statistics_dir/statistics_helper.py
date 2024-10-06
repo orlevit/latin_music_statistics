@@ -24,13 +24,12 @@ def calc_general_themes_counts(df_org, col):
     miscellaneous_threshold = max(int(len(df) * 0.025), 2)
 
     all_counts = df[col].value_counts()
-    total_records = len(df)
     
     miscellaneous_themes = [k for k, v in all_counts.items() if  v <= miscellaneous_threshold]
     df.loc[:, 'general_themes_w_miscellaneous'] = df[col]
     df.loc[df[col].isin(miscellaneous_themes), 'general_themes_w_miscellaneous'] = 'Miscellaneous'
 
-    gt_stat = calculate_counts_with_sentiment(df, "general_themes_w_miscellaneous", "selected_sentiment")
+    gt_stat, _ = calculate_counts_with_sentiment(df, "general_themes_w_miscellaneous", "selected_sentiment")
     
     if 'Miscellaneous' in gt_stat:
         gt_stat['Miscellaneous'] = gt_stat.pop('Miscellaneous')

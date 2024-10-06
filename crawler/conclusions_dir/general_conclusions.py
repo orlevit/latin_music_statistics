@@ -2,16 +2,18 @@ GENERAL_GENERAL_INSIGHT = """
 - General statistics:
     1. There are {len_songs} songs in the corpus.
     2. There corpus has {len_diff_artists} different artists.
-    3. {single_sentiment}
-    4. {avg_sentiment}    
+    3. {avg_sentiment}    
+    4. {single_sentiment}
     5. The average unique words per song is: {avg_song_len}.
-    6. The prominent singer percentage: Women ({women_percentage}%), Men ({men_percentage}%), Both ({both_percentage}%).
+    6. The prominent singer percentage: Women - {women_percentage}%, Men - {men_percentage}%, Both - {both_percentage}%.
     """
 
 GENERAL_WORD_INSIGHT ="""
-        - The words "Querer" and "Amor" occur at significantly higher rates compared to other terms, indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
-        - While the precise meaning of the text may not be immediately apparent from the words alone, the context and sentiment conveyed through key terms like "dejar" (leave), "volver" (return), "morir" (die), and "olvidar" (forget) suggest an underlying theme of loss—most likely the loss of love. 
-        - To fully comprehend the song, in addition to understanding its grammar, you need to have a familiarity with an average of 55 words.
+        - The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
+        - While the precise meaning of the text may not be immediately apparent from the words alone, the context and sentiment conveyed through key terms like "dejar" ("leave"), "volver" ("return"), "morir" ("die"), and "olvidar" ("forget") suggest an underlying theme of loss — most likely the loss of love. 
+        - To fully comprehend the song, in addition to understanding its grammar, one needs to have a familiarity with an average of 55 words.
+
+        Since the following conclusions rely on sentiment allocations and are easier to deduce when sentiment is displayed within the bars, a plot has been added under the "images/general" directory, named "unique_word_with_sentiment."  This plot was pre-generated because creating it in real time would increase processing time by 11.5 times.
         - When the artists think ("pensar"), the word usually (~80%) exists in songs with a negative sentiment, it may be more beneficial for them to refrain from such contemplation.
         - The word "vida" ("life") has approximately a 63% probability of being used in songs with negative sentiment. This may suggests that batchata singers have negative emotional themes in their lives.
         """
@@ -19,8 +21,8 @@ GENERAL_WORD_INSIGHT ="""
 GENERAL_ARTIST_INSIGHT = """
         - Out of the graph above, only artists with more than 20 songs are considered sufficient and included in the analysis:
             * The five most frequent artists appear in 36% of the songs, with a significant drop in the presence of other artists beyond this point. This indicates that the vocabulary, sentiment, and themes conveyed by these prominent artists have a major impact on the overall statistics.
-            * "Frank Reyes" and "Ralphy Dreamz" tend to produce a significantly higher volume of negative-themed songs compared to their peers.
-            * "Prince Royce" is recognized as one of the most optimistic and positive artists in the Batchata music industry.
+            * Frank Reyes and Ralphy Dreamz tend to produce a significantly higher volume of negative-themed songs compared to their peers.
+            * Prince Royce is recognized as one of the most optimistic and positive artists in the Batchata music industry (For better view of this colclusion, slice by known positive sentiment.
         """
 
 GENERAL_SENTIMENT_INSIGHT = """

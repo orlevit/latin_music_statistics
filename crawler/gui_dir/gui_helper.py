@@ -222,15 +222,15 @@ def gui_template(
             unsafe_allow_html=True,
         )
         wordcloud_func(norm_words_stat_freq)
-        single_sentiment_markdown = max_sentiment_to_text(sentiment_single_dist)
         avg_sentiment_markdown = avg_sentiment_to_text(sentiment_avg_dist)
+        single_sentiment_markdown = max_sentiment_to_text(sentiment_single_dist)
 
         st.markdown(
             GENERAL_GENERAL_INSIGHT.format(
                 len_songs=len(df),
                 len_diff_artists=artist_stat_len,
-                single_sentiment=single_sentiment_markdown,
                 avg_sentiment=avg_sentiment_markdown,
+                single_sentiment=single_sentiment_markdown,
                 avg_song_len=avg_words_per_song,
                 women_percentage=women_percentage, 
                 men_percentage=men_percentage, 
@@ -346,7 +346,6 @@ def gui_template(
 #            st.subheader("-" * 60)
 
         # Plot general themes
-
         plot_top_samples_with_sentiments(
             nested_dict=theme_stat,
             x_label="Theme",

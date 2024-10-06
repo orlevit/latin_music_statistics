@@ -27,7 +27,7 @@ def general_statistics(df):
         artist_stat,
         artist_stat_len,
         norm_words_stat_freq,
-        #norm_words_stat_freq_sent,
+        # norm_words_stat_freq_sent,
         gt_stat,
         sentiment_single_dist,
         sentiment_avg_dist,
