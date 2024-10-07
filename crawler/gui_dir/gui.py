@@ -39,6 +39,7 @@ if options == "General":
     gui_template(
         df,
         title=gen_title,
+        higher_option = "GENERAL",
         options=["General", "Word", "Sentiment", "Artist", "Theme", "Data"],
         specific_artist_name="",
         word_insight=GENERAL_WORD_INSIGHT,
@@ -55,15 +56,17 @@ if options == "Known Sentiment":
     sentiment_options = st.sidebar.radio("Select ", ["Positive", "Negative", "Neutral"])
     sen_title = f"{sentiment_options.upper()} SENTIMENT STATISTICS"
     df_sentiment = df[df["selected_sentiment"] == sentiment_options.lower()]
+
     gui_template(
         df_sentiment,
         sen_title,
+        higher_option = "KNOWN_SENTIMENT",
         options=["General", "Word", "Artist", "Theme", "Data"],
         specific_artist_name="",
-        word_insight=KNOWN_SENTIMENT_WORD_INSIGHT,
+        word_insight="",
         sentiment_insight='',
-        artist_insight=KNOWN_SENTIMENT_ARTIST_INSIGHT,
-        theme_insight=KNOWN_SENTIMENT_THEME_INSIGHT,
+        artist_insight="",
+        theme_insight="",
         sent_artist_graph_desc=SENT_ARTIST_GRAPH_DESC,      
         out_of_total_percentage=False,
         present_sentiments=[sentiment_options.lower()],
@@ -94,6 +97,7 @@ if options == "Known Artist":
     gui_template(
         df_artist,
         artist_title,
+        higher_option = "KNOWN_ARTIST",
         options=["General", "Word", "Sentiment", "Theme", "Data"],
         specific_artist_name=artist_options,
         word_insight=art_word_ins,

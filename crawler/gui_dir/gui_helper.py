@@ -18,6 +18,7 @@ from statistics_dir.statistics import *
 from conclusion_text import *
 from general_conclusions import  GENERAL_GENERAL_INSIGHT
 from config import SENTIMENT_COLORS, SENTIMENT
+from known_sentiment_conclusions import find_known_sentiment_conc
 
 
 def plot_top_percentage(
@@ -177,6 +178,7 @@ def wordcloud_func(df):
 def gui_template(
     df,
     title,
+    higher_option,
     options,
     specific_artist_name,
     word_insight,
@@ -215,6 +217,9 @@ def gui_template(
         artist_stat, artist_stat_len = known_sentiment_artists_calc_counts_with_sentiment(df_total, "all_artists", "selected_sentiment", present_sentiments)
 
     analysis_option = st.sidebar.selectbox("Select analysis", options)
+
+    if higher_option == "KNOWN_SENTIMENT":
+        word_insight, artist_insight, theme_insight = find_known_sentiment_conc(present_sentiments[0])
 
     if analysis_option == "General":
         st.markdown(
@@ -261,7 +266,7 @@ def gui_template(
         #    rotation=90,
         #    samples_num=20
         #)
-
+        print('word:::',word_insight)
         st.subheader("Conclusions")
         st.markdown(word_insight)
 
@@ -326,7 +331,7 @@ def gui_template(
             specific_artist_themes_df = find_themes_specific_artist(
                 df, specific_artist_name
             )
-            specific_artist_theme_stat = calculate_counts_with_sentiment(
+            specific_artist_theme_stat, _ = calculate_counts_with_sentiment(
                 specific_artist_themes_df, "general_theme", "selected_sentiment"
             )
 
