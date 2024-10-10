@@ -3,6 +3,8 @@
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
+- [Conclusions](#Conclusions)
+- [Process](#Process)
 
 ## Installation
 1. Git clone the repository:
@@ -20,3 +22,6 @@ Run streamlit:
 ```
 streamlit run gui_dir/gui.py
 ```
+## Process
+1000 songs were donwl
+## Conclusions
