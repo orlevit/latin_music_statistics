@@ -23,9 +23,42 @@ Run streamlit:
 streamlit run gui_dir/gui.py(
 ```
 ## Dara preProcess
-1000 songs were doneloaded through "Genius" API (collection of song lyrics) under the "Batchata" gener type.
-They were examined with chatGPT for filtering suggested song that might have been wrongly classified as "Batchata" gener and listen to them. In addition, songs that have less than 98% Spanish words were filtered out. Only 842 were actually Batchata songs. Each song were given a theme(short summary of the song) and sentiment (how much of the song is "Neutral"/"Negative"/"Positive"), Those themes and theme were tested to see if they are make sence manually. (theme - 0/54  had wrong results for the theme. 5/18 - had wrong results for the neutral sentiment(3 positive/2 negative). 0/18 - had wrong results for the "Negative" sentiment. 3/18 - had wrong results for the "Negative" sentiment (1 neutral/2 negative).
-filters were applied on those songs as multiple formats of phrases were added to the songs and are not part of the songs lyrics (iterative manual examination process until 50 consective lyrics were without additional unnecessary words).
+
+# Preprocessing Corpus of Bachata Song Lyrics
+
+The original corpus consists of 1,000 songs, which were downloaded using the "Genius" API, with a focus on the Bachata genre.
+Out of those 1000, only 842 remained.
+Below are the steps followed during the preprocessing phase:
+
+## Data Collection
+- **Source:** The song lyrics were retrieved via the "Genius" API.
+- **Genre:** All songs were classified under the "Bachata" genre.
+  
+## Data Filtering
+
+### Genre Validation
+- **ChatGPT-Assisted Validation:** Each song's genre was reviewed with the assistance of ChatGPT to ensure it was correctly classified as Bachata. If a song was incorrectly labeled, it was listened to for verification.
+  
+### Language Filtering
+- **Spanish Word Count:** Songs with less than 98% Spanish words were excluded from the corpus.
+  
+## Song Annotation
+
+Each song was further processed by assigning two key attributes:
+1. **Theme:** A short summary that describes the overall theme of the song.
+2. **Sentiment:** The sentiment of the song, categorized as either "Neutral", "Negative", or "Positive".
+
+### Manual Validation of Annotations
+- **Theme Accuracy:** Out of 54 tested themes, none were found to be incorrect.
+- **Sentiment Accuracy:**
+  - Out of 18 songs with "Neutral" sentiment, 5 were misclassified (3 should have been "Positive" and 2 "Negative").
+  - All songs labeled as "Negative" were correctly classified.
+  - For songs labeled as "Positive", 3 were misclassified (1 should have been "Neutral" and 2 "Negative").
+
+## Data Cleanup
+
+An iterative process was applied to ensure that the lyrics were free from non-lyrical content:
+- **Manual Examination:** Multiple phrases and non-lyrical elements (e.g., advertisements or artist comments) were manually removed from the lyrics. This process was repeated until 50 consecutive songs were found to have no extraneous content.
 
 ## Conclusions
 
