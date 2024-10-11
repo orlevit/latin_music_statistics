@@ -93,7 +93,7 @@ SENTIMENT = ["negative", "positive", "neutral"]
 
 
 ####### Graph explanation
-G_EXPLAIN_WORDS = 'This graph illustrates the percentage of normalized word forms (e.g., quero/quise → querer), with the normalized word frequencies displayed above each bar.'
+G_EXPLAIN_WORDS = 'This graph presents the percentage of normalized unique word forms. Normalization refers to grouping variations of a word (e.g., "quero/quise" as forms of "querer"). Each unique word form, regardless of its frequency in a song, is counted only once. The unique normalized word frequencies are displayed above each corresponding bar.'
 G_EXPLAIN_SENTIMENTS = 'The percentage of phrases categorized as "negative," "positive," or "neutral" is recorded for each song.\n* "Average Sentiment Percentage": This represents the average of these sentiment percentages across all songs.\n* "Single Sentiment Percentage": Each song is classified based on its predominant sentiment and the percentage reflects the distribution of these predominant sentiments across the entire collection of songs.'
 
 G_EXPLAIN_ARTISTS = 'The percentage of songs and their corresponding sentiments for each artist, with frequencies displayed above each bar.'

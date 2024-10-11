@@ -13,8 +13,8 @@ GENERAL_WORD_INSIGHT ="""
         - While the precise meaning of the text may not be immediately apparent from the words alone, the context and sentiment conveyed through key terms like "dejar" ("leave"), "volver" ("return"), "morir" ("die"), and "olvidar" ("forget") suggest an underlying theme of loss — most likely the loss of love. 
         - To fully comprehend the song, in addition to understanding its grammar, one needs to have a familiarity with an average of 55 words.
 
-        Since the following conclusions rely on sentiment allocations and are easier to deduce when sentiment is displayed within the bars, a plot has been added under the "images/general" directory, named "unique_word_with_sentiment."  This plot was pre-generated because creating it in real time would increase processing time by 11.5 times.
-        - When the artists think ("pensar"), the word usually (~80%) exists in songs with a negative sentiment, it may be more beneficial for them to refrain from such contemplation.
+        Since the following conclusions rely on sentiment allocations and are easier to deduce when sentiment is displayed within the bars, a plot has been added under the "images/general" directory, named "unique_word_with_sentiment". This plot was pre-generated because creating it in real time would increase processing time by 11.5 times.
+        - When the artists think ("pensar"), the word usually (~67%) exists in songs with a negative sentiment, it may be more beneficial for them to refrain from such contemplation.
         - The word "vida" ("life") has approximately a 63% probability of being used in songs with negative sentiment. This may suggests that batchata singers have negative emotional themes in their lives.
         """
 

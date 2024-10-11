@@ -2,6 +2,12 @@ import numpy as np
 import pandas as pd
 
 
+def eval_col(df, col_name):
+    try:
+        df.loc[:, col_name] = df[col_name].apply(lambda x: eval(x))
+    except (TypeError, NameError, SyntaxError) as e:
+        pass
+
 def calculate_counts(df, col):
     df_expanded = df.explode(col)
 

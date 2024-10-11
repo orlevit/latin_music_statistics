@@ -38,8 +38,10 @@ def plot_top_percentage(
     else:
         sentiment_colors = top_df["Sentiment"].map(sentiment_colors).fillna('gray')
 
+    fig, ax = plt.subplots()
+
     # Create the bar plot
-    bars = plt.bar(top_df.iloc[:, 0], top_df["Percentage"], color=sentiment_colors)
+    bars = ax.bar(top_df.iloc[:, 0], top_df["Percentage"], color=sentiment_colors)
 
     # Add annotations to each bar
     if annot_bar:
@@ -52,16 +54,15 @@ def plot_top_percentage(
                 ha="center",
                 va="bottom",
             )
-
-    plt.xlabel(x_label)
-    plt.ylabel("Percentage")
-    plt.title(title)
+    ax.set_xlabel(x_label)
+    ax.set_ylabel("Percentage")
+    ax.set_title(title)
 
     if rotation != 0:
         plt.xticks(rotation=rotation)
 
     plt.tight_layout()
-    st.pyplot(plt)
+    st.pyplot(fig)
     plt.close()
 
 
@@ -156,13 +157,14 @@ def plot_top_samples_with_sentiments(
         plt.xticks(rotation=rotation)
 
     plt.tight_layout()
-    st.pyplot(plt)
+    st.pyplot(fig)
     plt.close()
 
 
 def wordcloud_func(df):
-    words_dict = df.set_index("norm_words")["Frequency"].to_dict()
-    wordcloud = WordCloud(width=800, height=400, background_color="white")
+    words_dict = df.set_index("norm_unique_words")["Frequency"].to_dict()
+    #wordcloud = WordCloud(width=800, height=400, background_color="white")
+    wordcloud = WordCloud(background_color="white")
     wordcloud.generate_from_frequencies(words_dict)
     
     fig, ax = plt.subplots()
@@ -245,7 +247,7 @@ def gui_template(
 
     elif analysis_option == "Word":
         st.markdown(
-            '<h4 style="font-size:15px;text-align: center;">Normalized word form distribution</h4>',
+            '<h4 style="font-size:15px;text-align: center;">Normalized unique word form distribution</h4>',
             unsafe_allow_html=True,
         )
         st.write(explain_words)
@@ -266,7 +268,6 @@ def gui_template(
         #    rotation=90,
         #    samples_num=20
         #)
-        print('word:::',word_insight)
         st.subheader("Conclusions")
         st.markdown(word_insight)
 

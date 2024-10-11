@@ -53,7 +53,7 @@ if options == "General":
     )
 
 if options == "Known Sentiment":
-    sentiment_options = st.sidebar.radio("Select ", ["Positive", "Negative", "Neutral"])
+    sentiment_options = st.sidebar.radio("Select ", ["Positive", "Negative"])
     sen_title = f"{sentiment_options.upper()} SENTIMENT STATISTICS"
     df_sentiment = df[df["selected_sentiment"] == sentiment_options.lower()]
 
