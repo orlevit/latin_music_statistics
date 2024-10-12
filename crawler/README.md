@@ -51,7 +51,7 @@ streamlit run gui_dir/gui.py
 ```
 Then the App will present the following side bars:
 <p align="center">
-  <img src="images/usage.png" width="500" height="250">
+  <img src="images/usage.png" width="180" height="300">
 </p>
 
 First choose the foreknowledge, then choose the specific analysis.
@@ -109,7 +109,7 @@ An iterative process was applied to ensure that the lyrics were free from non-ly
 
 ## Conclusions
 
-### General
+### No prior knowledge
 #### Word Insight
 * The words "querer" ("want") and "amor" ("love") occur at significantly higher rates, indicating a focus on desire and love, emphasizing longing for love.
 Predominantly negative sentiment, combined with terms implying change (e.g., "dejar" ("leave"), "volver" ("return"), "olvidar" ("forget")), points to an underlying theme of loss, likely the loss of love.
