@@ -1,5 +1,8 @@
 # Batchata music statistics    
 ![](https://github.com/orlevit/latin_music_statistics/crawler/images/general/cloud_words.png)
+<p align="center">
+  <img src="images/general/cloud_words.png" width="400" height="350">
+</p>
 
 ## Table of Contents
 - [Installation](#installation)
