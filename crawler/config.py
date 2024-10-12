@@ -32,6 +32,11 @@ BATCH_THEME_JSOL_FILE = os.path.join(DATA_JSOL_DIR, 'song_theme')
 BATCH_SENTIMENT_JSOL_FILE = os.path.join(DATA_JSOL_DIR, 'song_sentiment')
 #########################
 
+#### Images location ####
+IMAGES_DIR = os.path.join(BASE_DIR, 'images')
+IMAGES_GENERAL_DIR = os.path.join(IMAGES_DIR, 'general')
+IMAGES_GENERAL_FILE= os.path.join(IMAGES_GENERAL_DIR, 'unique_word_with_sentiment.png')
+#########################
 GENIUS_API_TOKEN = 'Od2yrHNfOCRHimIH3ev-wGZxZNJz3-47I4QfpzihKstD4eQaCItV28UJ72MAiV2W'
 
 NOT_BACHATA = [
@@ -93,12 +98,13 @@ SENTIMENT = ["negative", "positive", "neutral"]
 
 
 ####### Graph explanation
-G_EXPLAIN_WORDS = 'This graph presents the percentage of normalized unique word forms. Normalization refers to grouping variations of a word (e.g., "quero/quise" as forms of "querer"). Each unique word form, regardless of its frequency in a song, is counted only once. The unique normalized word frequencies are displayed above each corresponding bar.'
+G_EXPLAIN_WORDS = 'This graph presents the percentage of normalized unique word forms. Normalization refers to grouping variations of a word (e.g., "quero/quise" as forms of "querer"). Each unique word form, regardless of its frequency in a song, is counted only once. The unique normalized word frequencies are displayed above each corresponding bar, while the percentage represents the proportion of songs in which these words appear'
+
 G_EXPLAIN_SENTIMENTS = 'The percentage of phrases categorized as "negative," "positive," or "neutral" is recorded for each song.\n* "Average Sentiment Percentage": This represents the average of these sentiment percentages across all songs.\n* "Single Sentiment Percentage": Each song is classified based on its predominant sentiment and the percentage reflects the distribution of these predominant sentiments across the entire collection of songs.'
 
 G_EXPLAIN_ARTISTS = 'The percentage of songs and their corresponding sentiments for each artist, with frequencies displayed above each bar.'
 
-G_EXPLAIN_KNOWN_SENTIMENT_ARTISTS = 'The graph illustrates the percentage of songs exhibiting specific sentiments for each artist, relative to their total number of songs. The bars are arranged in descending order of frequency.'
+G_EXPLAIN_KNOWN_SENTIMENT_ARTISTS = 'The graph illustrates the percentage of songs exhibiting specific sentiments for each artist, relative to their total number of songs.'
 
 G_EXPLAIN_THEMES = 'The percentage of songs categorized by their sentiment distribution across general themes.'
 

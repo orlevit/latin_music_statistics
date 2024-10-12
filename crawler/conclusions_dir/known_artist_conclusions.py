@@ -1,11 +1,11 @@
 KNOWN_ARTIST_WORD_INSIGHT_ROMEO_SANTOS = """
-        - Romeo Santos similarly emphasizes his name and the term "king", which may indicate a high opinion of himself.
-        - Romeo Santos prefers to call women "Mami."
+        - Romeo Santos emphasizes his name and the term "king", which may indicate a high opinion of himself.
+        - Romeo Santos affectionately refers to women as "Mami".
 """
 
 KNOWN_ARTIST_WORD_INSIGHT_PRINCE_ROYCE = """
         - Prince Royce often emphasizes his name.
-        - Prince Royce frequently refers to women as "Baby."
+        - Prince Royce affectionately refers to women as "Baby".
 """
 
 KNOWN_ARTIST_WORD_INSIGHT_AVENTURA = """

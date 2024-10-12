@@ -11,13 +11,13 @@ KNOWN_SENTIMENT_WORD_INSIGHT_NEGATIVE = """
 
 KNOWN_SENTIMENT_ARTIST_INSIGHT_POSITIVE = """
         - An analysis of artists with a substantial discography (over 20 songs) reveals that:
-            * Prince Royce stands out as one of the most positive, with approximately every other song carrying an upbeat or optimistic tone.
+            * Prince Royce stands out as one of the most positive, with approximately every other song carrying an optimistic view.
         - Interestingly, although Juan Luis Guerra does not have an extensive catalog of songs, each one carries a positive sentiment.
 """
 
 KNOWN_SENTIMENT_ARTIST_INSIGHT_NEGATIVE = """
         - An analysis of artists with a substantial discography (over 20 songs) reveals that:
-            * Frank Reyes as one of the most negative artists, with nearly 80% of his tracks expressing predominantly negative sentiment.
+            * Frank Reyes is one of the most negative artists, with nearly 80% of his tracks expressing predominantly negative sentiment.
 """
 
 # KNOWN_SENTIMENT_THEME_INSIGHT

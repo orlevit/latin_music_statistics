@@ -13,11 +13,10 @@ sys.path.append(os.path.abspath(os.path.join(parent_dir, "theme_dir")))
 sys.path.append(os.path.abspath(os.path.join(parent_dir, "conclusions_dir")))
 
 from clustering_general_theme import find_themes_specific_artist
-from general_functions import center_text
 from statistics_dir.statistics import *
 from conclusion_text import *
 from general_conclusions import  GENERAL_GENERAL_INSIGHT
-from config import SENTIMENT_COLORS, SENTIMENT
+from config import SENTIMENT_COLORS, SENTIMENT, IMAGES_GENERAL_FILE
 from known_sentiment_conclusions import find_known_sentiment_conc
 
 
@@ -270,6 +269,8 @@ def gui_template(
         #)
         st.subheader("Conclusions")
         st.markdown(word_insight)
+        if higher_option == "GENERAL":
+            st.image(IMAGES_GENERAL_FILE)
 
     elif analysis_option == "Sentiment":
         st.markdown(
@@ -288,7 +289,7 @@ def gui_template(
         )
 
         st.markdown(
-            '<h4 style="font-size:15px;text-align: center;">The maximum sentiment as the overall sentiment of the song</h4>',
+            '<h4 style="font-size:15px;text-align: center;">A single sentiment as the overall sentiment of the song</h4>',
             unsafe_allow_html=True,
         )
 

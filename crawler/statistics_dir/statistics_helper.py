@@ -13,7 +13,8 @@ def calculate_counts(df, col):
 
     all_counts = df_expanded[col].value_counts()
 
-    total_records = len(df_expanded)
+    #total_records = len(df_expanded)
+    total_records = len(df)
     percentages = (all_counts / total_records) * 100
 
     # Create a DataFrame with the statistics
