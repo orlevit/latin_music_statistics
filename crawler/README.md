@@ -1,14 +1,27 @@
-# Batchata music statistics    
-![](https://github.com/orlevit/latin_music_statistics/crawler/images/general/cloud_words.png)
+# Batchata music statistics
+
 <p align="center">
-  <img src="images/general/cloud_words.png" width="400" height="350">
+  <img src="images/general/cloud_words.png" width="500" height="250">
 </p>
+
+This is statistics regarding Batchata songs.
+
+As a batchata dancer I always searching for a way to improve my dace. One way is to relate to the song.
+
+Since I do not have high Spanish understanding, I used my analytical skills to get insights and answers for the follwoing questions:
+
+What is the most likely word/sentiment/artist/themes, when I have the previous knowledge:
+* No previous knowledge.
+* If I know the sentiment of the song.
+* If I know the artist in the song.
 
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Conclusions](#Conclusions)
+- [Corpus_statistics](#Corpus_statistics)
 - [Process](#Process)
+- [Conclusions](#Conclusions)
+
 
 ## Installation
 1. Git clone the repository:
@@ -24,9 +37,28 @@ python install -r requirmentx.txt
 ## Usage
 Run streamlit:
 ```
-streamlit run gui_dir/gui.py(
+streamlit run gui_dir/gui.py
 ```
-## Dara preProcess
+
+## Corpus_statistics
+* There are 842 songs in the corpus.
+* There corpus has 517 different artists.
+* Average sentiment distribution (Averaging the sentiments of all the songs):
+  * negative - Percentage: 74.11%.
+  * positive - Percentage: 56.78%.
+  * neutral - Percentage: 27.90%.
+* Single sentiment distribution (The highest sentiment percentage is selected as the sentiment for a single song):
+  * negative - Frequency: 516 | Percentage: 61.28%.
+  * positive - Frequency: 312 | Percentage: 37.05%.
+  * neutral - Frequency: 14 | Percentage: 1.66%.
+
+* The average unique words per song is: 55.
+* The prominent singer percentage:
+  * Women - 9.03%
+  * Men - 78.5%
+  * Both - 12.47%.
+
+## Data preProcess
 
 # Preprocessing Corpus of Bachata Song Lyrics
 
