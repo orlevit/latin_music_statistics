@@ -1,27 +1,37 @@
-# Batchata music statistics
+# Bachata music statistics
 
 <p align="center">
   <img src="images/general/cloud_words.png" width="500" height="250">
 </p>
 
-This is statistics regarding Batchata songs.
-
-As a batchata dancer I always searching for a way to improve my dace. One way is to relate to the song.
-
-Since I do not have high Spanish understanding, I used my analytical skills to get insights and answers for the follwoing questions:
-
-What is the most likely word/sentiment/artist/themes, when I have the previous knowledge:
-* No previous knowledge.
-* If I know the sentiment of the song.
-* If I know the artist in the song.
-
 ## Table of Contents
+- [TL;DR](#tldr)
+- [Motivation](#motivation)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Corpus_statistics](#Corpus_statistics)
-- [Process](#Process)
-- [Conclusions](#Conclusions)
+- [Corpus statistics](#corpus-statistics)
+- [Data preprocess](#data-preprocess)
+- [Conclusions](#conclusions)
 
+## TL;DR
+This app provides an analysis of Bachata songs, offering insights into the most frequent words, sentiments, artists, and themes. It allows you to explore the data in three different ways:
+
+* When you have no prior knowledge of the song.
+* When you know the sentiment in advance.
+* When you know the artist in advance.
+
+Key Conclusion:
+
+## Motivation
+As a passionate Bachata dancer, I'm always looking for ways to deepen my connection with the music and improve my dancing. One important aspect of this is being able to understand and relate to the songs on a deeper level. However, since my Spanish comprehension is limited, I've often felt like I'm missing out on some of the rich emotional and thematic nuances that make Bachata music so powerful.
+To bridge this gap, I decided to leverage my analytical skills and explore Bachata songs from a data-driven perspective. Here are some keyquestions that I thought that would help me better understand the music and, ultimately, become a more connected dancer:
+
+This led me to ask a few key questions that I believe would not only enhance my understanding of the songs but also improve my overall experience as a dancer:
+* **What are the most common words, sentiments, artists, and themes in Bachata music?** When I know nothing about the song in advance.
+
+* **How does knowing the sentiment of a song help predict its words or themes?** For instance, if a song has a negative sentiment, what can I expect the theme to be?
+
+* **How does knowing the artist affect the expected themes or words in their songs?** Do certain artists consistently focus on particular themes or frequently use specific words in their songs?
 
 ## Installation
 1. Git clone the repository:
@@ -40,7 +50,7 @@ Run streamlit:
 streamlit run gui_dir/gui.py
 ```
 
-## Corpus_statistics
+## Corpus statistics
 * There are 842 songs in the corpus.
 * There corpus has 517 different artists.
 * Average sentiment distribution (Averaging the sentiments of all the songs):
@@ -58,7 +68,7 @@ streamlit run gui_dir/gui.py
   * Men - 78.5%
   * Both - 12.47%.
 
-## Data preProcess
+## Data preprocess
 
 # Preprocessing Corpus of Bachata Song Lyrics
 
