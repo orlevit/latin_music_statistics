@@ -69,9 +69,6 @@ streamlit run gui_dir/gui.py
   * Both - 12.47%.
 
 ## Data preprocess
-
-# Preprocessing Corpus of Bachata Song Lyrics
-
 The original corpus consists of 1,000 songs, which were downloaded using the "Genius" API, with a focus on the Bachata genre.
 Out of those 1000, only 842 remained.
 Below are the steps followed during the preprocessing phase:
