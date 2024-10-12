@@ -29,7 +29,7 @@ df["norm_words"] = df["norm_words"].apply(lambda x: eval(x))
 
 # Additional analyses
 options = st.sidebar.radio(
-    "Select Analysis", ["General", "Known Sentiment", "Known Artist"]
+    "Foreknowledge", ["General", "Known Sentiment", "Known Artist"]
 )
 
 
@@ -53,7 +53,7 @@ if options == "General":
     )
 
 if options == "Known Sentiment":
-    sentiment_options = st.sidebar.radio("Select ", ["Positive", "Negative"])
+    sentiment_options = st.sidebar.radio("Select Analysis", ["Positive", "Negative"])
     sen_title = f"{sentiment_options.upper()} SENTIMENT STATISTICS"
     df_sentiment = df[df["selected_sentiment"] == sentiment_options.lower()]
 
@@ -87,7 +87,7 @@ if options == "Known Artist":
     artist_counts = Counter(df_all_artist["all_artists"].tolist())
     sorted_elements = sorted(artist_counts, key=artist_counts.get, reverse=True)
 
-    artist_options = st.sidebar.selectbox("Select ", sorted_elements)
+    artist_options = st.sidebar.selectbox("Select Analysis", sorted_elements)
     art_word_ins, art_theme_ins = get_specific_artist_insights(artist_options)
     df_artist = df_all_artist[df_all_artist["all_artists"] == artist_options]
 

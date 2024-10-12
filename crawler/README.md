@@ -49,6 +49,12 @@ Run streamlit:
 ```
 streamlit run gui_dir/gui.py
 ```
+Then the App will present the following side bars:
+<p align="center">
+  <img src="images/usage.png" width="500" height="250">
+</p>
+
+First choose the foreknowledge, then choose the specific analysis.
 
 ## Corpus statistics
 * There are 842 songs in the corpus.
@@ -104,25 +110,28 @@ An iterative process was applied to ensure that the lyrics were free from non-ly
 ## Conclusions
 
 ### General
-General Word Insight
-The words "querer" ("want") and "amor" ("love") occur at significantly higher rates, indicating a focus on desire and love, emphasizing longing for love.
+#### Word Insight
+* The words "querer" ("want") and "amor" ("love") occur at significantly higher rates, indicating a focus on desire and love, emphasizing longing for love.
 Predominantly negative sentiment, combined with terms implying change (e.g., "dejar" ("leave"), "volver" ("return"), "olvidar" ("forget")), points to an underlying theme of loss, likely the loss of love.
-Understanding the song requires familiarity with an average of 55 words in addition to grammar comprehension.
-Artists thinking ("pensar") typically have a ~67% occurrence in songs with negative sentiment; refraining from such contemplation may be more beneficial.
-The word "vida" ("life") is used ~63% in songs with negative sentiment, suggesting bachata singers often express negative emotional themes.
-General Artist Insight
-Only artists with more than 20 songs are included in the analysis:
-The five most frequent artists appear in 36% of the songs, significantly impacting vocabulary, sentiment, and themes.
-Frank Reyes and Ralphy Dreamz produce a higher volume of negative-themed songs compared to peers.
-Prince Royce is recognized as one of the most optimistic and positive artists in the bachata music industry.
-General Sentiment Insight
-A song is most likely to convey a negative sentiment.
-Negative and positive songs exhibit a comparable level of neutral sentiment in their lyrics (~14%).
-Some songs demonstrate neutral sentiment, interpreted as either positive or negative depending on the listener’s perspective; the model classifies them with a high neutral value.
-Most "Neutral" songs are attributed to less frequent or lesser-known artists; well-known singers convey clearer sentiments (either "Negative" or "Positive").
-General Theme Insight
-Predominant themes include "Love and Relationships," "Heartbreak and Loss," and "Toxic Relationships," representing approximately 71% of the corpus, focusing on deep emotional connections and ongoing or concluded relationships.
-The theme of "Toxic Relationships" conveys a negative connotation and cannot be interpreted otherwise.
+* Understanding the song requires familiarity with an average of 55 words in addition to grammar comprehension.
+* Artists thinking ("pensar") typically have a ~67% occurrence in songs with negative sentiment; refraining from such contemplation may be more beneficial.
+* The word "vida" ("life") is used ~63% in songs with negative sentiment, suggesting bachata singers often express negative emotional themes.
+
+#### Artist Insight
+* Only artists with more than 20 songs are included in the analysis:
+    * The five most frequent artists appear in 36% of the songs, significantly impacting vocabulary, sentiment, and themes.
+    * Frank Reyes and Ralphy Dreamz produce a higher volume of negative-themed songs compared to peers.
+    * Prince Royce is recognized as one of the most optimistic and positive artists in the bachata music industry.
+
+#### Sentiment Insight
+* A song is most likely to convey a negative sentiment.
+* Negative and positive songs exhibit a comparable level of neutral sentiment in their lyrics (~14%).
+* Some songs demonstrate neutral sentiment, interpreted as either positive or negative depending on the listener’s perspective; the model classifies them with a high neutral value.
+* Most "Neutral" songs are attributed to less frequent or lesser-known artists; well-known singers convey clearer sentiments (either "Negative" or "Positive").
+
+#### Theme Insight
+* Predominant themes include "Love and Relationships," "Heartbreak and Loss," and "Toxic Relationships," representing approximately 71% of the corpus, focusing on deep emotional connections and ongoing or concluded relationships.
+* The theme of "Toxic Relationships" conveys a negative connotation and cannot be interpreted otherwise.
 
 
 ### Known sentiment
