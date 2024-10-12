@@ -144,7 +144,7 @@ def dist_single_sentiment(df, col):
         'Percentage': artist_percentages
     }).reset_index()
     stats_df.columns = ['Sentiment', 'Frequency', 'Percentage']
-    stats_df = stats_df.sort_values(by='Sentiment', ascending=False)
+    stats_df = stats_df.sort_values(by='Percentage', ascending=False)
 
     return stats_df
 
@@ -158,7 +158,7 @@ def dist_avg_sentiment(df, col):
     df_sentiment = df_series_sentiment.reset_index()
     df_sentiment.columns = ['Sentiment', 'Percentage']
 
-    df_sentiment = df_sentiment.sort_values(by='Sentiment', ascending=False)
+    df_sentiment = df_sentiment.sort_values(by='Percentage', ascending=False)
 
     return df_sentiment
 

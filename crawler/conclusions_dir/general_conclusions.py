@@ -15,14 +15,14 @@ GENERAL_WORD_INSIGHT ="""
 
         Since the following conclusions rely on sentiment allocations and are easier to deduce when sentiment is displayed within the bars. The pre-generated plot is included below, as generating it in real time would extend the processing time by a factor of 11.5.
         - When the artists think ("pensar"), the word usually (~67%) exists in songs with a negative sentiment, it may be more beneficial for them to refrain from such contemplation.
-        - The word "vida" ("life") is usually (~63%) used in songs with a negative sentiment. This may suggests that batchata singers often express negative emotional themes in their lives.
+        - The word "vida" ("life") is usually (~63%) used in songs with a negative sentiment. This may suggests that bachata singers often express negative emotional themes in their lives.
         """
 
 GENERAL_ARTIST_INSIGHT = """
         - Out of the graph above, only artists with more than 20 songs are considered sufficient and included in the analysis:
             * The five most frequent artists appear in 36% of the songs, with a significant drop in the presence of other artists beyond this point. This indicates that the vocabulary, sentiment, and themes conveyed by these prominent artists have a major impact on the overall statistics.
             * Frank Reyes and Ralphy Dreamz tend to produce a significantly higher volume of negative-themed songs compared to their peers.
-            * Prince Royce is recognized as one of the most optimistic and positive artists in the Batchata music industry (For better view of this colclusion, slice by known positive sentiment).
+            * Prince Royce is recognized as one of the most optimistic and positive artists in the Bachata music industry (For better view of this colclusion, slice by known positive sentiment).
         """
 
 GENERAL_SENTIMENT_INSIGHT = """
