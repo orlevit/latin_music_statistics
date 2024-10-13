@@ -55,7 +55,8 @@ Then the App will present the following side bars:
 </p>
 
 First choose the foreknowledge, then choose the specific analysis.
-
+* General = no prior knowledge
+  
 ## Corpus statistics
 * There are 842 songs in the corpus.
 * There corpus has 517 different artists.
