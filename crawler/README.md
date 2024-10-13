@@ -22,6 +22,23 @@ This app provides an analysis of Bachata songs, offering insights into the most 
 
 Key Conclusion:
 
+#### General
+* The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
+
+* It is most likely that a song will convey a negative sentiment.
+
+* The predominant themes "Love and Relationships", "Heartbreak and Loss" and "Toxic Relationships" are representative of approximately 71% of the corpus. Notably, many of these songs delve into the complexities of deep emotional connections, often focusing on ongoing or concluded relationships rather than those in their initial stages.
+
+#### Romeo Santos
+* Emphasizes his name and the term "king", which may indicate a high opinion of himself and affectionately refers to women as "Mami".
+
+* His music deals a lot with contemplating the human "inner world" and his lyrics often delve into complex emotions.
+
+### Prince Royce
+* Often emphasizes his name and affectionately refers to women as "Baby".
+
+* One of his musical themes is "Forbidden Love" which usually involves falling in love with an unavailable person and focuses on the emotional highs and the thrill of love.
+  
 ## Motivation
 As a passionate Bachata dancer, I'm always looking for ways to deepen my connection with the music and improve my dancing. One important aspect of this is being able to understand and relate to the songs on a deeper level. However, since my Spanish comprehension is limited, I've often felt like I'm missing out on some of the rich emotional and thematic nuances that make Bachata music so powerful.
 To bridge this gap, I decided to leverage my analytical skills and explore Bachata songs from a data-driven perspective. Here are some keyquestions that I thought that would help me better understand the music and, ultimately, become a more connected dancer:
@@ -112,40 +129,50 @@ An iterative process was applied to ensure that the lyrics were free from non-ly
 
 ### No prior knowledge
 #### Word Insight
-* The words "querer" ("want") and "amor" ("love") occur at significantly higher rates, indicating a focus on desire and love, emphasizing longing for love.
-Predominantly negative sentiment, combined with terms implying change (e.g., "dejar" ("leave"), "volver" ("return"), "olvidar" ("forget")), points to an underlying theme of loss, likely the loss of love.
-* Understanding the song requires familiarity with an average of 55 words in addition to grammar comprehension.
-* Artists thinking ("pensar") typically have a ~67% occurrence in songs with negative sentiment; refraining from such contemplation may be more beneficial.
-* The word "vida" ("life") is used ~63% in songs with negative sentiment, suggesting bachata singers often express negative emotional themes.
+* The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
+
+* Although the precise meaning of the text may not be immediately clear from the words themselves, the predominantly negative sentiment, combined with terms that imply change, such as "dejar" ("leave"), "volver" ("return"), and "olvidar" ("forget") - points to an underlying theme of loss, most likely the loss of love.
+  
+* To fully comprehend the song, in addition to understanding its grammar, one needs to have a familiarity with an average of 55 words.
+
+* When the artists think ("pensar"), the word usually (~67%) exists in songs with a negative sentiment, it may be more beneficial for them to refrain from such contemplation.
+
+* The word "vida" ("life") is usually (~63%) used in songs with a negative sentiment. This may suggests that bachata singers often express negative emotional themes in their lives.
 
 #### Artist Insight
-* Only artists with more than 20 songs are included in the analysis:
-    * The five most frequent artists appear in 36% of the songs, significantly impacting vocabulary, sentiment, and themes.
-    * Frank Reyes and Ralphy Dreamz produce a higher volume of negative-themed songs compared to peers.
-    * Prince Royce is recognized as one of the most optimistic and positive artists in the bachata music industry.
+* Out of the graph above, only artists with more than 20 songs are considered sufficient and included in the analysis:
+    * The five most frequent artists appear in 36% of the songs, with a significant drop in the presence of other artists beyond this point. This indicates that the vocabulary, sentiment, and themes conveyed by these prominent artists have a major impact on the overall statistics.
+
+    * Frank Reyes and Ralphy Dreamz tend to produce a significantly higher volume of negative-themed songs compared to their peers.
 
 #### Sentiment Insight
-* A song is most likely to convey a negative sentiment.
-* Negative and positive songs exhibit a comparable level of neutral sentiment in their lyrics (~14%).
-* Some songs demonstrate neutral sentiment, interpreted as either positive or negative depending on the listener’s perspective; the model classifies them with a high neutral value.
-* Most "Neutral" songs are attributed to less frequent or lesser-known artists; well-known singers convey clearer sentiments (either "Negative" or "Positive").
+* It is most likely that a song will convey a negative sentiment.
+
+* The negative and positive songs exhibit a comparable level of neutral sentiment in their lyrics (~14%).
+
+* Interestingly, some songs demonstrate a neutral sentiment. Upon analysis, it seems these songs can be interpreted as either positive or negative depending on the listener’s perspective. As a result, the model refrained from assigning a definitive sentiment and instead classified them with a high neutral value.
+
+* The majority of "Neutral" songs are attributed to less frequent or lesser-known artists, suggesting that more prominent or well-known singers tend to convey clearer, more distinct sentiments, whether "Negative" or "Positive".
 
 #### Theme Insight
-* Predominant themes include "Love and Relationships," "Heartbreak and Loss," and "Toxic Relationships," representing approximately 71% of the corpus, focusing on deep emotional connections and ongoing or concluded relationships.
-* The theme of "Toxic Relationships" conveys a negative connotation and cannot be interpreted otherwise.
+* The predominant themes "Love and Relationships", "Heartbreak and Loss" and "Toxic Relationships" are representative of approximately 71% of the corpus. Notably, many of these songs delve into the complexities of deep emotional connections, often focusing on ongoing or concluded relationships rather than those in their initial stages. When exploring the theme of "Critique of Love," it becomes evident that this encompasses a broader critique of love itself, as well as specific commentary on contemporary relationships.
 
+* The theme of "Toxic Relationships" inherently conveys a negative connotation and cannot be interpreted in any other light.
 
 ### Known sentiment
 #### --- Positive ---
 #### Word Insight
 * When the sentiment is "Positive," compared to "Negative" or "Neutral," there is a high probability that the event being described occurred at night, as the word "noche" ("night") appears more frequently.
+  
 * When the sentiment is "Positive," the use of words like "Mujer" ("Woman"), "Mami," and "Baby" suggests two things:
-    * A significant presence of male artists in the dataset.
-    * That when the singer is in a positive mood, he is more likely to refer to his partner using affectionate terms or nicknames.
+  * A significant presence of male artists in the dataset.
+
+  * That when the singer is in a positive mood, he is more likely to refer to his partner using affectionate terms or nicknames.
 
 #### Artist Insight
 An analysis of artists with a substantial discography (over 20 songs) reveals that:
 * Prince Royce stands out as one of the most positive, with approximately every other song carrying an optimistic view.
+
 * Interestingly, although Juan Luis Guerra does not have an extensive catalog of songs, each one carries a positive sentiment.
 
 #### Theme Insight
@@ -154,7 +181,7 @@ An analysis of artists with a substantial discography (over 20 songs) reveals th
 
 #### --- Negative ---
 #### Word Insight
-* When the sentiment is "Negative," the word "Morir" ("Die") frequently appears, suggesting that when the singer suffers, it is in its most extreme form.
+* When the sentiment is "Negative" the word "Morir" ("Die") frequently appears, suggesting that when the singer suffers, it is in its most extreme form.
  
 #### Artist Insight
 An analysis of artists with a substantial discography (over 20 songs) reveals that:
@@ -166,15 +193,20 @@ When the sentiment is "Negative," the most likely theme is "Heartbreak and Loss.
 ### Known artist
 
 #### Romeo Santos
-* Emphasizes his name and the term "king", indicating a high opinion of himself.
+* Emphasizes his name and the term "king", which may indicate a high opinion of himself.
+
 * Affectionately refers to women as "Mami".
-* His music deals with contemplating the human "inner world" and often delves into complex emotions.
+
+* His music deals a lot with contemplating the human "inner world" and his lyrics often delve into complex emotions.
 
 ### Prince Royce
 * Often emphasizes his name.
+
 * Affectionately refers to women as "Baby".
-* One of his musical themes is "Forbidden Love", involving love with an unavailable person and focusing on the emotional highs and thrill of love.
+
+* One of his musical themes is "Forbidden Love" which usually involves falling in love with an unavailable person and focuses on the emotional highs and the thrill of love.
 
 ### Aventura
-* Highlights their band name, fitting since Romeo Santos is a member of * the group.
-* One of their musical themes is "Desire for Deeper Connection", reflecting an inclination toward superficial relationships.
+* Highlights their band name, which is fitting given that Romeo Santos is a member of the group.
+
+* One of their musical themes is "Desire for Deeper Connection", which may reflects the songwriter's inclination toward having superficial relationships.
