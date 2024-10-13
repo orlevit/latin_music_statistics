@@ -29,7 +29,7 @@ GENERAL_SENTIMENT_INSIGHT = """
         - It is most likely that a song will convey a negative sentiment.
         - The negative and positive songs exhibit a comparable level of neutral sentiment in their lyrics (~14%).
         - Interestingly, some songs demonstrate a neutral sentiment. Upon analysis, it seems these songs can be interpreted as either positive or negative depending on the listener’s perspective. As a result, the model refrained from assigning a definitive sentiment and instead classified them with a high neutral value.
-        - The majority of "Neutral" songs are attributed to less frequent or lesser-known artists, suggesting that more prominent or well-known singers tend to convey clearer, more distinct sentiments, whether "Negative" or "Positive"
+        - The majority of "Neutral" songs are attributed to less frequent or lesser-known artists, suggesting that more prominent or well-known singers tend to convey clearer, more distinct sentiments, whether "Negative" or "Positive".
 """
 
 GENERAL_THEME_INSIGHT = """
