@@ -20,7 +20,7 @@ This app provides an analysis of Bachata songs, offering insights into the most 
 * When you know the sentiment in advance.
 * When you know the artist in advance.
 
-Key Conclusion:
+### Key Conclusion:
 
 #### General
 * The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
@@ -34,7 +34,7 @@ Key Conclusion:
 
 * His music deals a lot with contemplating the human "inner world" and his lyrics often delve into complex emotions.
 
-### Prince Royce
+#### Prince Royce
 * Often emphasizes his name and affectionately refers to women as "Baby".
 
 * One of his musical themes is "Forbidden Love" which usually involves falling in love with an unavailable person and focuses on the emotional highs and the thrill of love.
