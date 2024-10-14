@@ -125,6 +125,16 @@ Each song was further processed by assigning two key attributes:
 An iterative process was applied to ensure that the lyrics were free from non-lyrical content:
 - **Manual Examination:** Multiple phrases and non-lyrical elements (e.g., advertisements or artist comments) were manually removed from the lyrics. This process was repeated until 50 consecutive songs were found to have no extraneous content.
 
+#### Sentiment
+Advance sentiment analysis not only identifies whether the emotional tone of a message is positive, negative, or neutral but also considers the broader context in which the text is presented. For instance, in songs like "Eres Mía" by Romeo Santos, where the singer expresses possessive love and jealousy in an upbeat and seemingly happy tone, the sentiment is classified as mixed. Despite the positive tone, the underlying themes of possessiveness and jealousy introduce a negative moral context, which cause the overall sentiment to lean toward negative. Contextual analysis is crucial in capturing such nuances, allowing for a more accurate representation of sentiment.
+
+Examples
+Song with positive sentiment:
+"Corazón Sin Cara by Prince Royce" - Embracing and loving someone for who they are, beyond physical appearances and imperfections (described with warm words).
+
+Song with negative sentiment:
+"Los Infieles by Aventura" - Engaging in a forbidden love affair despite the dangers and moral consequences (described by both positive and negative emotions).
+
 ## Conclusions
 
 ### No prior knowledge
