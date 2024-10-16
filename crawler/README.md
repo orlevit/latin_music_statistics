@@ -55,7 +55,7 @@ This led me to ask a few key questions that I believe would not only enhance my 
 ```
 git clone https://github.com/orlevit/latin_music_statistics.git
 ```
-2. Create virtual environment.
+2. Create virtual environment with Pyhton 3.12.
 3. Install python packages within the virtual environment:
 ```
 python install -r requirmentx.txt
