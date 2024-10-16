@@ -209,14 +209,14 @@ When the sentiment is "Negative," the most likely theme is "Heartbreak and Loss.
 
 * His music deals a lot with contemplating the human "inner world" and his lyrics often delve into complex emotions.
 
-### Prince Royce
+#### Prince Royce
 * Often emphasizes his name.
 
 * Affectionately refers to women as "Baby".
 
 * One of his musical themes is "Forbidden Love" which usually involves falling in love with an unavailable person and focuses on the emotional highs and the thrill of love.
 
-### Aventura
+#### Aventura
 * Highlights their band name, which is fitting given that Romeo Santos is a member of the group.
 
 * One of their musical themes is "Desire for Deeper Connection", which may reflects the songwriter's inclination toward having superficial relationships.
