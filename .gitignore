@@ -7,6 +7,10 @@ lms/
 __pycache__/
 *.py[cod]
 *$py.class
+Untitled.ipynb
+gui_dir/Untitled.ipynb
+kill.ipynb
+kill2.ipynb
 
 # C extensions
 *.so
