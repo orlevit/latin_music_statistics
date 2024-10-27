@@ -163,7 +163,13 @@ def dist_avg_sentiment(df, col):
     df_series_sentiment = df_sentiment_raw.mean() * 100 
     df_sentiment = df_series_sentiment.reset_index()
     df_sentiment.columns = ['Sentiment', 'Percentage']
+    
+    df_sentiment['Percentage'] = df_sentiment['Percentage'].apply(lambda x: round(x))
+    total_p = df_sentiment['Percentage'].sum()
 
+    if 100 != total_p:
+        df_sentiment.loc[df_sentiment.index[-1], 'Percentage'] += 100 - total_p
+        
     df_sentiment = df_sentiment.sort_values(by='Percentage', ascending=False)
 
     return df_sentiment
