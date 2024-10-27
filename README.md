@@ -1,68 +1,54 @@
 # Bachata music statistics
 
 <p align="center">
-  <img src="images/image.png" width="500" height="250">
+  <img src="images/image.png" width="700" height="500">
 </p>
 
 ## Table of Contents
-- [TL;DR](#tldr)
 - [Motivation](#motivation)
-- [Installation](#installation)
 - [Usage](#usage)
+- [Installation](#installation)
 - [Corpus statistics](#corpus-statistics)
 - [Data preprocess](#data-preprocess)
 - [Conclusions](#conclusions)
 
-## TL;DR
-This app provides an analysis of Bachata songs, offering insights into the most frequent words, sentiments, artists, and themes. It allows you to explore the data in three different ways:
-
-* When you have no prior knowledge of the song.
-* When you know the sentiment in advance.
-* When you know the artist in advance.
-
-### Key Conclusion:
-
-#### General
-* The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
-
-* It is most likely that a song will convey a negative sentiment.
-
-* The predominant themes "Love and Relationships", "Heartbreak and Loss" and "Toxic Relationships" are representative of approximately 71% of the corpus. Notably, many of these songs delve into the complexities of deep emotional connections, often focusing on ongoing or concluded relationships rather than those in their initial stages.
-
-#### Romeo Santos
-* Emphasizes his name and the term "king", which may indicate a high opinion of himself and affectionately refers to women as "Mami".
-
-* His music deals a lot with contemplating the human "inner world" and his lyrics often delve into complex emotions.
-
-#### Prince Royce
-* Often emphasizes his name and affectionately refers to women as "Baby".
-
-* One of his musical themes is "Forbidden Love" which usually involves falling in love with an unavailable person and focuses on the emotional highs and the thrill of love.
-  
 ## Motivation
 As a passionate Bachata dancer, I'm always looking for ways to deepen my connection with the music and improve my dancing. One important aspect of this is being able to understand and relate to the songs on a deeper level. However, since my Spanish comprehension is limited, I've often felt like I'm missing out on some of the rich emotional and thematic nuances that make Bachata music so powerful.
 To bridge this gap, I decided to leverage my analytical skills and explore Bachata songs from a data-driven perspective. Here are some keyquestions that I thought that would help me better understand the music and, ultimately, become a more connected dancer:
 
-This led me to ask a few key questions that I believe would not only enhance my understanding of the songs but also improve my overall experience as a dancer:
 * **What are the most common words, sentiments, artists, and themes in Bachata music?** When I know nothing about the song in advance.
 
 * **How does knowing the sentiment of a song help predict its words or themes?** For instance, if a song has a negative sentiment, what can I expect the theme to be?
 
 * **How does knowing the artist affect the expected themes or words in their songs?** Do certain artists consistently focus on particular themes or frequently use specific words in their songs?
 
-## Installation
-1. Git clone the repository:
-```
-git clone https://github.com/orlevit/latin_music_statistics.git
-```
-2. Create virtual environment with Pyhton 3.12.
-3. Install python packages within the virtual environment:
-```
-python install -r requirmentx.txt
-```
+### Key Conclusion:
+
+#### General (No prior knowledge)
+* The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
+
+* It is most likely that a song will convey a negative sentiment.
+
+* The predominant themes "Love and Relationships", "Heartbreak and Loss" and "Toxic Relationships" are representative of approximately 71% of the corpus. Notably, many of these songs delve into the complexities of deep emotional connections, often focusing on ongoing or concluded relationships rather than those in their initial stages.
+
+#### Known sentiment
+* When the sentiment is "Positive," compared to "Negative" or "Neutral," there is a high probability that the event being described occurred at night, as the word "noche" ("night") appears more frequently.
+* 
+#### Known artist:
+##### Romeo Santos
+* Emphasizes his name and the term "king", which may indicate a high opinion of himself and affectionately refers to women as "Mami".
+
+* His music deals a lot with contemplating the human "inner world" and his lyrics often delve into complex emotions.
+
+##### Prince Royce
+* Often emphasizes his name and affectionately refers to women as "Baby".
+
+* One of his musical themes is "Forbidden Love" which usually involves falling in love with an unavailable person and focuses on the emotional highs and the thrill of love.
 
 ## Usage
-Run streamlit:
+There are two ways to run the app:
+1) Run the app through the link: #########################################
+2) After the [Installation](#installation), run streamlit:
 ```
 streamlit run gui_dir/gui.py
 ```
@@ -73,6 +59,17 @@ Then the App will present the following side bars:
 
 First choose the foreknowledge, then choose the specific analysis.
 * General = no prior knowledge
+
+## Installation
+1. Git clone the repository:
+```
+git clone https://github.com/orlevit/latin_music_statistics.git
+```
+2. Create virtual environment with Pyhton 3.12.3
+3. Install python packages within the virtual environment:
+```
+python install -r requirmentx.txt
+```
   
 ## Corpus statistics
 * There are 842 songs in the corpus.
@@ -137,7 +134,7 @@ Song with negative sentiment:
 
 ## Conclusions
 
-### No prior knowledge
+### General (No prior knowledge)
 #### Word Insight
 * The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
 
