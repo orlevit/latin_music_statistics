@@ -11,6 +11,7 @@ Untitled.ipynb
 gui_dir/Untitled.ipynb
 kill.ipynb
 kill2.ipynb
+data_dir/themes/jsol/*.jsonl
 
 # C extensions
 *.so
