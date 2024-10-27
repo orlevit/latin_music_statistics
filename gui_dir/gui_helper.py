@@ -217,7 +217,7 @@ def gui_template(
 
         artist_stat, artist_stat_len = known_sentiment_artists_calc_counts_with_sentiment(df_total, "all_artists", "selected_sentiment", present_sentiments)
 
-    analysis_option = st.sidebar.selectbox("Select analysis", options)
+    analysis_option = st.sidebar.radio("Select analysis", options)
 
     if higher_option == "KNOWN_SENTIMENT":
         word_insight, artist_insight, theme_insight = find_known_sentiment_conc(present_sentiments[0])
