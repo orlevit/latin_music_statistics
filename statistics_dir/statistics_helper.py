@@ -146,6 +146,12 @@ def dist_single_sentiment(df, col):
     stats_df.columns = ['Sentiment', 'Frequency', 'Percentage']
     stats_df = stats_df.sort_values(by='Percentage', ascending=False)
 
+    stats_df['Percentage'] = stats_df['Percentage'].apply(lambda x: round(x))
+    total_p = stats_df['Percentage'].sum()
+    
+    if 100 != total_p:
+        stats_df.loc[stats_df.index[-1], 'Percentage'] += 100 - total_p
+
     return stats_df
 
 def dist_avg_sentiment(df, col):
@@ -169,8 +175,12 @@ def avg_word_per_song(df, col):
 
 def gender_stat(df):
     df_len = len(df)
-    men_p = np.round((len(df[df['gender'] == 'Male']) / df_len) * 100, 2)
-    women_p = np.round((len(df[df['gender'] == 'Female']) / df_len) * 100, 2)
-    both_p = np.round((len(df[df['gender'] == 'Both']) / df_len) * 100, 2)
+    men_p = int(np.round((len(df[df['gender'] == 'Male']) / df_len) * 100, 0))
+    women_p = int(np.round((len(df[df['gender'] == 'Female']) / df_len) * 100, 0))
+    both_p = int(np.round((len(df[df['gender'] == 'Both']) / df_len) * 100, 0))
 
+    total_p = men_p + women_p + both_p
+    if 100 != total_p:
+        both_p += 100 - total_p
+        
     return women_p, men_p, both_p
