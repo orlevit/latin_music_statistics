@@ -33,7 +33,7 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 
 #### Known sentiment
 * When the sentiment is "Positive," compared to "Negative" or "Neutral," there is a high probability that the event being described occurred at night, as the word "noche" ("night") appears more frequently.
-* 
+
 #### Known artist:
 ##### Romeo Santos
 * Emphasizes his name and the term "king", which may indicate a high opinion of himself and affectionately refers to women as "Mami".
@@ -75,19 +75,19 @@ python install -r requirmentx.txt
 * There are 842 songs in the corpus.
 * There corpus has 517 different artists.
 * Average sentiment distribution (Averaging the sentiments of all the songs):
-  * negative - Percentage: 74.11%.
-  * positive - Percentage: 56.78%.
-  * neutral - Percentage: 27.90%.
+  * negative - Percentage: 49%.
+  * positive - Percentage: 37%.
+  * neutral - Percentage: 14%.
 * Single sentiment distribution (The highest sentiment percentage is selected as the sentiment for a single song):
-  * negative - Frequency: 516 | Percentage: 61.28%.
-  * positive - Frequency: 312 | Percentage: 37.05%.
-  * neutral - Frequency: 14 | Percentage: 1.66%.
+  * negative - Frequency: 516 | Percentage: 61%.
+  * positive - Frequency: 312 | Percentage: 37%.
+  * neutral - Frequency: 14 | Percentage: 2%.
 
 * The average unique words per song is: 55.
 * The prominent singer percentage:
-  * Women - 9.03%
-  * Men - 78.5%
-  * Both - 12.47%.
+  * Women - 9%
+  * Men - 79%
+  * Both - 12%.
 
 ## Data preprocess
 The original corpus consists of 1,000 songs, which were downloaded using the "Genius" API, with a focus on the Bachata genre.
