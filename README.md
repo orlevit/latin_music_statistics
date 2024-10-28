@@ -8,8 +8,8 @@
 - [Motivation](#motivation)
 - [Usage](#usage)
 - [Installation](#installation)
-- [Corpus statistics](#corpus-statistics)
 - [Data preprocess](#data-preprocess)
+- [Corpus statistics](#corpus-statistics) 
 - [Conclusions](#conclusions)
 
 ## Motivation
@@ -21,29 +21,6 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 * **How does knowing the sentiment of a song help predict its words or themes?** For instance, if a song has a negative sentiment, what can I expect the theme to be?
 
 * **How does knowing the artist affect the expected themes or words in their songs?** Do certain artists consistently focus on particular themes or frequently use specific words in their songs?
-
-### Key Conclusion:
-
-#### General (No prior knowledge)
-* The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
-
-* It is most likely that a song will convey a negative sentiment.
-
-* The predominant themes "Love and Relationships", "Heartbreak and Loss" and "Toxic Relationships" are representative of approximately 71% of the corpus. Notably, many of these songs delve into the complexities of deep emotional connections, often focusing on ongoing or concluded relationships rather than those in their initial stages.
-
-#### Known sentiment
-* When the sentiment is "Positive," compared to "Negative" or "Neutral," there is a high probability that the event being described occurred at night, as the word "noche" ("night") appears more frequently.
-
-#### Known artist:
-##### Romeo Santos
-* Emphasizes his name and the term "king", which may indicate a high opinion of himself and affectionately refers to women as "Mami".
-
-* His music deals a lot with contemplating the human "inner world" and his lyrics often delve into complex emotions.
-
-##### Prince Royce
-* Often emphasizes his name and affectionately refers to women as "Baby".
-
-* One of his musical themes is "Forbidden Love" which usually involves falling in love with an unavailable person and focuses on the emotional highs and the thrill of love.
 
 ## Usage
 There are two ways to run the app:
