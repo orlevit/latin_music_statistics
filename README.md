@@ -47,24 +47,6 @@ git clone https://github.com/orlevit/latin_music_statistics.git
 ```
 python install -r requirmentx.txt
 ```
-  
-## Corpus statistics
-* There are 842 songs in the corpus.
-* There corpus has 517 different artists.
-* Average sentiment distribution (Averaging the sentiments of all the songs):
-  * negative - Percentage: 49%.
-  * positive - Percentage: 37%.
-  * neutral - Percentage: 14%.
-* Single sentiment distribution (The highest sentiment percentage is selected as the sentiment for a single song):
-  * negative - Frequency: 516 | Percentage: 61%.
-  * positive - Frequency: 312 | Percentage: 37%.
-  * neutral - Frequency: 14 | Percentage: 2%.
-
-* The average unique words per song is: 55.
-* The prominent singer percentage:
-  * Women - 9%
-  * Men - 79%
-  * Both - 12%.
 
 ## Data preprocess
 The original corpus consists of 1,000 songs, which were downloaded using the "Genius" API, with a focus on the Bachata genre.
@@ -108,6 +90,24 @@ Song with positive sentiment:
 
 Song with negative sentiment:
 "Los Infieles by Aventura" - Engaging in a forbidden love affair despite the dangers and moral consequences (described by both positive and negative emotions).
+
+## Corpus statistics
+* There are 842 songs in the corpus.
+* There corpus has 517 different artists.
+* Average sentiment distribution (Averaging the sentiments of all the songs):
+  * negative - Percentage: 49%.
+  * positive - Percentage: 37%.
+  * neutral - Percentage: 14%.
+* Single sentiment distribution (The highest sentiment percentage is selected as the sentiment for a single song):
+  * negative - Frequency: 516 | Percentage: 61%.
+  * positive - Frequency: 312 | Percentage: 37%.
+  * neutral - Frequency: 14 | Percentage: 2%.
+
+* The average unique words per song is: 55.
+* The prominent singer percentage:
+  * Women - 9%.
+  * Men - 79%.
+  * Both - 12%.
 
 ## Conclusions
 
