@@ -26,7 +26,7 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 
 ## Usage
 There are two ways to run the app:
-1) Run the app through the link: #########################################
+1) Run the app through the link: [Application](https://latinmusicstatistics-8ujlucqhrhmmsqsn3iamfg.streamlit.app/)
 2) After the [Installation](#installation), run streamlit:
 ```
 streamlit run gui_dir/gui.py
