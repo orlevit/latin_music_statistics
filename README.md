@@ -22,7 +22,7 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 
 * **How does knowing the artist affect the expected themes or words in their songs?** Do certain artists consistently focus on particular themes or frequently use specific words in their songs?
 
-Example for a conclusion - In his music, Prince Royce often affectionately addresses women as "Baby", whereas Romeo Santos frequently uses "Mami" to convey a similar sentiment.
+**Example Conclusion** - In his music, Prince Royce often affectionately addresses women as "Baby", whereas Romeo Santos frequently uses "Mami" to convey a similar sentiment.
 
 ## Usage
 There are two ways to run the app:
@@ -52,7 +52,7 @@ python install -r requirmentx.txt
 
 ## Pipeline
 <p align="center">
-  <img src="images/process.png" width="180" height="300">
+  <img src="images/process.png" width="800" height="350">
 </p>
 
 - **Data cleaning:** At the end of the process 842 were remained.
