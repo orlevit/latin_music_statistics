@@ -8,7 +8,7 @@
 - [Motivation](#motivation)
 - [Usage](#usage)
 - [Installation](#installation)
-- [Data preprocess](#data-preprocess)
+- [Pipeline](#pipeline)
 - [Corpus statistics](#corpus-statistics) 
 - [Conclusions](#conclusions)
 
@@ -21,6 +21,8 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 * **How does knowing the sentiment of a song help predict its words or themes?** For instance, if a song has a negative sentiment, what can I expect the theme to be?
 
 * **How does knowing the artist affect the expected themes or words in their songs?** Do certain artists consistently focus on particular themes or frequently use specific words in their songs?
+
+Example for a conclusion - In his music, Prince Royce often affectionately addresses women as "Baby", whereas Romeo Santos frequently uses "Mami" to convey a similar sentiment.
 
 ## Usage
 There are two ways to run the app:
@@ -48,48 +50,27 @@ git clone https://github.com/orlevit/latin_music_statistics.git
 python install -r requirmentx.txt
 ```
 
-## Data preprocess
-The original corpus consists of 1,000 songs, which were downloaded using the "Genius" API, with a focus on the Bachata genre.
-Out of those 1000, only 842 remained.
-Below are the steps followed during the preprocessing phase:
+## Pipeline
+<p align="center">
+  <img src="images/process.png" width="180" height="300">
+</p>
 
-#### Data Collection
-- **Source:** The song lyrics were retrieved via the "Genius" API.
-- **Genre:** All songs were classified under the "Bachata" genre.
-  
-#### Data Filtering
-
-#### Genre Validation
-- **ChatGPT-Assisted Validation:** Each song's genre was reviewed with the assistance of ChatGPT to ensure it was correctly classified as Bachata. If a song was incorrectly labeled, it was listened to for verification.
-  
-#### Language Filtering
-- **Spanish Word Count:** Songs with less than 98% Spanish words were excluded from the corpus.
-  
-#### Song Annotation
-Each song was further processed by assigning two key attributes:
-1. **Theme:** A short summary that describes the overall theme of the song.
-2. **Sentiment:** The sentiment of the song, categorized as either "Neutral", "Negative", or "Positive".
-
-#### Manual Validation of Annotations
+- **Data cleaning:** At the end of the process 842 were remained.
 - **Theme Accuracy:** Out of 54 tested themes, none were found to be incorrect.
 - **Sentiment Accuracy:**
-  - Out of 18 songs with "Neutral" sentiment, 5 were misclassified (3 should have been "Positive" and 2 "Negative").
-  - All songs labeled as "Negative" were correctly classified.
-  - For songs labeled as "Positive", 3 were misclassified (1 should have been "Neutral" and 2 "Negative").
-
-#### Data Cleanup
-An iterative process was applied to ensure that the lyrics were free from non-lyrical content:
-- **Manual Examination:** Multiple phrases and non-lyrical elements (e.g., advertisements or artist comments) were manually removed from the lyrics. This process was repeated until 50 consecutive songs were found to have no extraneous content.
+  - Out of 18 songs labeled as "Neutral", 4 were misclassified (2 should have been "Positive" and 2 "Negative").
+  - Out of 18 songs labeled as "Negative", all were correctly classified.
+  - Out of 18 songs labeled as "Positive", 3 were misclassified (1 should have been "Neutral" and 2 "Negative").
 
 #### Sentiment
-Advance sentiment analysis not only identifies whether the emotional tone of a message is positive, negative, or neutral but also considers the broader context in which the text is presented. For instance, in songs like "Eres Mía" by Romeo Santos, where the singer expresses possessive love and jealousy in an upbeat and seemingly happy tone, the sentiment is classified as mixed. Despite the positive tone, the underlying themes of possessiveness and jealousy introduce a negative moral context, which cause the overall sentiment to lean toward negative. Contextual analysis is crucial in capturing such nuances, allowing for a more accurate representation of sentiment.
+Advance sentiment analysis not only identifies whether the emotional tone of a message is "Positive", "Negative", or "Neutral" but also considers the broader context in which the text is presented. For instance, in songs like "Eres Mía" by Romeo Santos, where the singer expresses possessive love and jealousy in an upbeat and seemingly happy tone, the sentiment is classified as mixed. Despite the positive tone, the underlying themes of possessiveness and jealousy introduce a negative moral context, which cause the overall sentiment to lean toward negative. Contextual analysis is crucial in capturing such nuances, allowing for a more accurate representation of sentiment.
 
 Examples
 Song with positive sentiment:
-"Corazón Sin Cara by Prince Royce" - Embracing and loving someone for who they are, beyond physical appearances and imperfections (described with warm words).
+"Corazón Sin Cara by Prince Royce" - Embracing and loving someone for who they are, beyond physical appearances and imperfections.
 
 Song with negative sentiment:
-"Los Infieles by Aventura" - Engaging in a forbidden love affair despite the dangers and moral consequences (described by both positive and negative emotions).
+"Los Infieles by Aventura" - Engaging in a forbidden love affair despite the dangers and moral consequences.
 
 ## Corpus statistics
 * There are 842 songs in the corpus.
