@@ -50,9 +50,7 @@ Song with negative sentiment:
 "Los Infieles by Aventura" - Engaging in a forbidden love affair despite the dangers and moral consequences.
 
 ## Usage
-The statistics is showing in the application.
-
-There are two ways to run the application:
+The statistics is showing in the application. There are two ways to run the application:
 1) Run the app through the link: [Application](https://latinmusicstatistics-8ujlucqhrhmmsqsn3iamfg.streamlit.app/)
 2) After the [Installation](#installation), run streamlit:
 ```
@@ -96,7 +94,7 @@ python install -r requirmentx.txt
   * Both - 12%.
 
 ## Conclusions
-Examples for the conclusion drawn from the statistics. For the full list ,please check the application.
+Examples of conclusions drawn from the statistics are provided below. For the complete list, please refer to the application.
 
 ### General (No prior knowledge)
 #### Word Insight
