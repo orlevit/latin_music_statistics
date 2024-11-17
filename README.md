@@ -52,7 +52,7 @@ python install -r requirmentx.txt
 
 ## Pipeline
 <p align="center">
-  <img src="images/process.png" width="800" height="350">
+  <img src="images/pipeline.png" width="800" height="350">
 </p>
 
 - **Data cleaning:** At the end of the process 842 were remained.
