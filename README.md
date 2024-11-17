@@ -1,4 +1,4 @@
-# Bachata music statistics
+![image](https://github.com/user-attachments/assets/10064e1a-35d9-44eb-b4b4-7891db9f5fd4)# Bachata music statistics
 
 <p align="center">
   <img src="images/image.png" width="700" height="500">
@@ -25,7 +25,8 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 **Example Conclusion** - In his music, Prince Royce often affectionately addresses women as "Baby", whereas Romeo Santos frequently uses "Mami" to convey a similar sentiment.
 
 ## Usage
-There are two ways to run the app:
+The statistics is showing in the application.
+There are two ways to run the application:
 1) Run the app through the link: [Application](https://latinmusicstatistics-8ujlucqhrhmmsqsn3iamfg.streamlit.app/)
 2) After the [Installation](#installation), run streamlit:
 ```
@@ -52,17 +53,20 @@ python install -r requirmentx.txt
 
 ## Pipeline
 <p align="center">
-  <img src="images/pipeline.png" width="800" height="350">
+  <img src="images/pipeline2.png" width="1000" height="600">
 </p>
 
-- **Data cleaning:** At the end of the process 842 were remained.
-- **Theme Accuracy:** Out of 54 tested themes, none were found to be incorrect.
-- **Sentiment Accuracy:**
-  - Out of 18 songs labeled as "Neutral", 4 were misclassified (2 should have been "Positive" and 2 "Negative").
-  - Out of 18 songs labeled as "Negative", all were correctly classified.
-  - Out of 18 songs labeled as "Positive", 3 were misclassified (1 should have been "Neutral" and 2 "Negative").
+- **Raw data:** Download 1000 Bachata songs through Genius API.
+- **Data cleaning:** Data Validation & Removal. At the end of the process 842 were remained.
+- **Additional features:** Add for each song the folllowing features: _Sentiment_, _Theme_, _General theme_.
+  - **Manual features validation:**
+    - **Theme Accuracy:** Out of 54 tested themes, none were found to be incorrect.
+    - **Sentiment Accuracy:**
+      - Out of 18 songs labeled as "Neutral", 4 were misclassified (2 should have been "Positive" and 2 "Negative").
+      - Out of 18 songs labeled as "Negative", all were correctly classified.
+      - Out of 18 songs labeled as "Positive", 3 were misclassified (1 should have been "Neutral" and 2 "Negative").
 
-#### Sentiment
+#### What is Sentiment
 Advance sentiment analysis not only identifies whether the emotional tone of a message is "Positive", "Negative", or "Neutral" but also considers the broader context in which the text is presented. For instance, in songs like "Eres Mía" by Romeo Santos, where the singer expresses possessive love and jealousy in an upbeat and seemingly happy tone, the sentiment is classified as mixed. Despite the positive tone, the underlying themes of possessiveness and jealousy introduce a negative moral context, which cause the overall sentiment to lean toward negative. Contextual analysis is crucial in capturing such nuances, allowing for a more accurate representation of sentiment.
 
 Examples
