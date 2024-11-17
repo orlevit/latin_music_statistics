@@ -26,7 +26,7 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 
 ## Pipeline
 <p align="center">
-  <img src="images/pipeline2.png" width="1000" height="600">
+  <img src="images/pipeline.png" width="1000" height="600">
 </p>
 
 - **Raw data:** Download 1000 Bachata songs through Genius API.
@@ -51,6 +51,7 @@ Song with negative sentiment:
 
 ## Usage
 The statistics is showing in the application.
+
 There are two ways to run the application:
 1) Run the app through the link: [Application](https://latinmusicstatistics-8ujlucqhrhmmsqsn3iamfg.streamlit.app/)
 2) After the [Installation](#installation), run streamlit:
@@ -101,7 +102,8 @@ Examples for the conclusion drawn from the statistics. For the full list ,please
 #### Word Insight
 * The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
 <p align="center">
-  <img src="images/conclusion/general_word.png" width="180" height="300">
+  <img src="images/conclusions/general_word.png" width="1000" height="800">
+  <b>This graph presents the percentage of normalized unique word forms. Normalization refers to grouping variations of a word (e.g., "quero/quise" as forms of "querer"). Each unique word form, regardless of its frequency in a song, is counted only once. The unique normalized word frequencies are displayed above each corresponding bar, while the percentage represents the proportion of songs in which these words appear.</b>  
 </p>
 
 ### Known sentiment
@@ -109,7 +111,8 @@ Examples for the conclusion drawn from the statistics. For the full list ,please
 ##### Word insight
 * When the sentiment is "Positive," compared to "Negative" or "Neutral," there is a high probability that the event being described occurred at night, as the word "noche" ("night") appears more frequently.
 <p align="center">
-  <img src="images/conclusion/sentiment_positive_word.png" width="180" height="300">
+  <img src="images/conclusions/sentiment_positive_artist.png" width="1000" height="800">
+  <b>The graph illustrates the percentage of songs exhibiting specific sentiments for each artist, relative to their total number of songs. The percentage represents the proportion of songs with a specific sentiment relative to the artist's entire catalog, while the order reflects the frequency of that particular sentiment.</b>  
 </p>
 
 ### Known artist
@@ -117,5 +120,6 @@ Examples for the conclusion drawn from the statistics. For the full list ,please
 ##### Theme insight
 * His music deals a lot with contemplating the human "inner world" and his lyrics often delve into complex emotions.
 <p align="center">
-  <img src="images/conclusion/artist_theme" width="180" height="300">
+  <img src="images/conclusions/artist_theme.png" width="1000" height="800">
+  <b>The proportion of songs categorized according to their sentiment distribution across various themes, with frequencies displayed above each bar.</b>
 </p>
