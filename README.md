@@ -44,10 +44,10 @@ Advance sentiment analysis not only identifies whether the emotional tone of a m
 
 Examples
 Song with positive sentiment:
-"Corazón Sin Cara by Prince Royce" - Embracing and loving someone for who they are, beyond physical appearances and imperfections.
+"Corazón Sin Cara" ("Heart Without a Face") by Prince Royce - Embracing and loving someone for who they are, beyond physical appearances and imperfections.
 
 Song with negative sentiment:
-"Los Infieles by Aventura" - Engaging in a forbidden love affair despite the dangers and moral consequences.
+"Los Infieles" ("The Unfaithful Ones") by Aventura - Engaging in a forbidden love affair despite the dangers and moral consequences.
 
 ## Usage
 The statistics is showing in the application. There are two ways to run the application:

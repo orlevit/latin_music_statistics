@@ -71,7 +71,7 @@ def known_sentiment_artists_calc_counts_with_sentiment(df, col, sentiment_col, s
         if sent_counts != 0:
             nested_dict[col_value] = {
                 'Frequency': sent_counts,
-                'Percentage': round(sent_counts/singer_frequency, 2),
+                'Percentage': round(sent_counts/singer_frequency, 2) * 100,
                 'Sentiments': ordered_counts
             }
     artist_stat_len = len(nested_dict)
