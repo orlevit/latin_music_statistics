@@ -14,7 +14,7 @@
 
 ## Motivation
 As a passionate Bachata dancer, I'm always looking for ways to deepen my connection with the music and improve my dancing. One important aspect of this is being able to understand and relate to the songs on a deeper level. However, since my Spanish comprehension is limited, I've often felt like I'm missing out on some of the rich emotional and thematic nuances that make Bachata music so powerful.
-To bridge this gap, I decided to leverage my analytical skills and explore Bachata songs from a data-driven perspective. Here are some keyquestions that I thought that would help me better understand the music and, ultimately, become a more connected dancer:
+To bridge this gap, I decided to leverage my analytical skills and explore Bachata songs from a data-driven perspective. Here are some key questions that I thought that would help me better understand the music and, ultimately, become a more connected dancer:
 
 * **What are the most common words, sentiments, artists, and themes in Bachata music?** When I know nothing about the song in advance.
 
@@ -22,9 +22,9 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 
 * **How does knowing the artist affect the expected themes or words in their songs?** Do certain artists consistently focus on particular themes or frequently use specific words in their songs?
 
-**Example Conclusion** - In his music, Prince Royce often affectionately addresses women as "Baby", whereas Romeo Santos frequently uses "Mami" to convey a similar sentiment.
+**Example of a Conclusion** - In his music, Prince Royce often affectionately addresses women as "Baby", whereas Romeo Santos frequently uses "Mami" to convey a similar sentiment.
 
-## Pipeline
+## Data and Process Workflow
 <p align="center">
   <img src="images/pipeline1.png?" width="1000" height="600">
 </p>
@@ -77,7 +77,7 @@ python install -r requirmentx.txt
 
 ## Corpus statistics
 * There are 842 songs in the corpus.
-* There corpus has 517 different artists.
+* The corpus has 517 different artists.
 * Average sentiment distribution (Averaging the sentiments of all the songs):
   * negative - Percentage: 49%.
   * positive - Percentage: 37%.
@@ -98,7 +98,7 @@ Examples of conclusions drawn from the statistics are provided below. For the co
 
 ### General (No prior knowledge)
 #### Word Insight
-* The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicating that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
+* The words "querer" ("want") and "amor" ("love") occur at significantly higher rates compared to other terms, it might indicate that a majority of the songs focus on desire and love, likely emphasizing the longing for love.
 <p align="center">
   <img src="images/conclusions/general_word.png" width="1000" height="800">
   <b>This graph presents the percentage of normalized unique word forms. Normalization refers to grouping variations of a word (e.g., "quero/quise" as forms of "querer"). Each unique word form, regardless of its frequency in a song, is counted only once. The unique normalized word frequencies are displayed above each corresponding bar, while the percentage represents the proportion of songs in which these words appear.</b>  
