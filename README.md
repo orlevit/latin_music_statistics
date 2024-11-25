@@ -26,7 +26,7 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 
 ## Pipeline
 <p align="center">
-  <img src="images/pipeline.png?" width="1000" height="600">
+  <img src="images/pipeline1.png?" width="1000" height="600">
 </p>
 
 - **Raw data:** Download 1000 Bachata songs through Genius API.
