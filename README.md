@@ -26,7 +26,7 @@ To bridge this gap, I decided to leverage my analytical skills and explore Bacha
 
 ## Pipeline
 <p align="center">
-  <img src="images/pipeline.png" width="1000" height="600">
+  <img src="images/pipeline.png?" width="1000" height="600">
 </p>
 
 - **Raw data:** Download 1000 Bachata songs through Genius API.
@@ -109,7 +109,7 @@ Examples of conclusions drawn from the statistics are provided below. For the co
 ##### Word insight
 * When the sentiment is "Positive," compared to "Negative" or "Neutral," there is a high probability that the event being described occurred at night, as the word "noche" ("night") appears more frequently.
 <p align="center">
-  <img src="images/conclusions/sentiment_positive_artist.png" width="1000" height="800">
+  <img src="images/conclusions/sentiment_positive_artist.png?" width="1000" height="800">
   <b>The graph illustrates the percentage of songs exhibiting specific sentiments for each artist, relative to their total number of songs. The percentage represents the proportion of songs with a specific sentiment relative to the artist's entire catalog, while the order reflects the frequency of that particular sentiment.</b>  
 </p>
 
