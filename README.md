@@ -51,7 +51,7 @@ Song with negative sentiment:
 
 ## Usage
 The statistics is showing in the application. There are two ways to run the application:
-1) Run the app through the link: [Application](https://latinmusicstatistics-8ujlucqhrhmmsqsn3iamfg.streamlit.app/)
+1) Run the app through the link: [Application](https://latinmusicstatistics-9znsk7ahew79ujtd3s26oc.streamlit.app/)
 2) After the [Installation](#installation), run streamlit:
 ```
 streamlit run gui_dir/gui.py
